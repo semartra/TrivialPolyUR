@@ -4,5 +4,10 @@
     <string name="app_name">TrivialPolyUR</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="new_party">Nueva Partida</string>
+    <string name="configuration">Configuración</string>
+    <string name="help">Ayuda</string>
+    <string name="exit">Salida</string>
+    <string name="img_logo">imagen_logo</string>
 
 </resources>
