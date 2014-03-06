@@ -8,52 +8,65 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/Button01"
+    <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/ImageView01"
-        android:layout_marginRight="14dp"
-        android:text="@string/configuration" />
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="78dp">
+        
+    </TableLayout>
 
-    <ImageView
-        android:id="@+id/ImageView01"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tableLayout1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/img_logo"
-        android:src="@drawable/logo_negro" />
+        android:layout_marginLeft="22dp"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ImageView01"
-        android:layout_below="@+id/ImageView01"
-        android:layout_marginLeft="63dp"
-        android:text="@string/new_party" />
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="27dp"
+            android:contentDescription="@string/img_logo"
+            android:src="@drawable/logo_negro" />
 
-    <Button
-        android:id="@+id/Button03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/Button01"
-        android:layout_below="@+id/Button01"
-        android:layout_marginRight="17dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/exit" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/Button04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button03"
-        android:layout_alignBottom="@+id/Button03"
-        android:layout_alignRight="@+id/button1"
-        android:layout_marginRight="20dp"
-        android:text="@string/help" />
+            <Button
+                android:id="@+id/bt_nuevoJuego"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_NuevoJuego" />
+
+            <Button
+                android:id="@+id/bt_Configuracion"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_Configuracion" />
+
+            <Button
+                android:id="@+id/bt_Ayuda"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_Ayuda" />
+
+            <Button
+                android:id="@+id/bt_Salir"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_Salir" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

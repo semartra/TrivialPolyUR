@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name="Tablero"></activity>
+        <activity android:name="MenuPrincipal"></activity>
+        <activity android:name="TableroSecundario"></activity>
     </application>
 
 </manifest>

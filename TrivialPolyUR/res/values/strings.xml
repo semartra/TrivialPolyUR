@@ -9,5 +9,9 @@
     <string name="help">Ayuda</string>
     <string name="exit">Salida</string>
     <string name="img_logo">imagen_logo</string>
+    <string name="bt_Ayuda">Ayuda</string>
+    <string name="bt_Salir">Salir</string>
+    <string name="bt_Configuracion">Configuración</string>
+    <string name="bt_NuevoJuego">Nuevo Juego</string>
 
 </resources>

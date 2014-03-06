@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splashscreen);
         
         Button boton = (Button) findViewById(R.id.button1);
         boton.setOnClickListener(new OnClickListener() {
@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
            public void onClick(View v) {
               Button b=(Button) v;
               b.setText("pulsado");
-        	   Intent intent = new Intent(MainActivity.this, Tablero.class);
+        	   Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
               startActivity(intent);
               //startActivityForResult(intent, 11);
 

@@ -2,8 +2,12 @@ package com.proyecto.trivialpolyur;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Display;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -32,6 +36,20 @@ public class Tablero extends Activity {
          }
             TableRow row = new TableRow(this);
             for (int j = 0; j < 10; j++) {
+            	
+            	Button b=new Button(this);
+            	b.setText("Pant.Sec.");
+            	b.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+			              Button b=(Button) v;
+			              b.setText("pulsado");
+			        	   Intent intent = new Intent(Tablero.this, TableroSecundario.class);
+			              startActivity(intent);
+					}
+				});
+            	
             	 tableroCeldas[j][i] = new FrameLayout(this);
                  tableroCeldas[j][i].setLayoutParams(params);
                 if(k==0 ){
@@ -39,7 +57,8 @@ public class Tablero extends Activity {
                 }else{
                 	tableroCeldas[j][i].setBackgroundResource(R.drawable.infantil);
                 }
-              
+                tableroCeldas[j][i].addView(b);
+                
                 row.addView(tableroCeldas[j][i]);
                 if(k==0){
                  k++;
