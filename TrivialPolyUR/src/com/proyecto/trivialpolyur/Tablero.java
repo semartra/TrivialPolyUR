@@ -19,9 +19,16 @@ import android.widget.Toast;
 
 public class Tablero extends Activity {
 
+	private int resultado;
+	private boolean dobles;
+	
     public void aceptar(){
+    	int d1=Dado.lanzarDado();
+		int d2=Dado.lanzarDado();
 		
-    	Toast t=Toast.makeText(this, "Ya has tirado", Toast.LENGTH_SHORT);
+    	Toast t=Toast.makeText(this, d1 + " ~~ " + d2, Toast.LENGTH_LONG);
+    	resultado=d1+d2;
+    	dobles=(d1==d2);
     	t.show();
     	
     }
@@ -33,8 +40,9 @@ public class Tablero extends Activity {
 
         
         final AlertDialog.Builder dialog= new AlertDialog.Builder(this);
-        dialog.setTitle("ya era hora");
-        dialog.setMessage("Por fin");
+        dialog.setTitle("TIRAR DADOS");
+        dialog.setIcon(R.drawable.dados);
+        dialog.setMessage("¡SUERTE!");
         dialog.setCancelable(false);
         
         
