@@ -13,5 +13,7 @@
     <string name="bt_Salir">Salir</string>
     <string name="bt_Configuracion">Configuración</string>
     <string name="bt_NuevoJuego">Nuevo Juego</string>
+    <string name="Dinero">Dinero</string>
+    <string name="atras">Atras</string>
 
 </resources>

@@ -19,22 +19,24 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignLeft="@+id/tableLayout1"
-        android:layout_alignParentTop="true"        
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="22dp"
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:layout_gravity="center"
+            android:layout_weight="1" >
             
             <ImageView
                 android:id="@+id/ImageView01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginRight="27dp"
                 android:contentDescription="@string/img_logo"
                 android:src="@drawable/logo_negro" />
@@ -42,37 +44,55 @@
         </LinearLayout>        
         
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"            
-            android:layout_gravity="center">
-	
-	        <Button
-	            android:id="@+id/bt_nuevoJuego"
-	            style="?android:attr/buttonStyleSmall"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/bt_NuevoJuego" />
-	
-	        <Button
-	            android:id="@+id/bt_Configuracion"
-	            style="?android:attr/buttonStyleSmall"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/bt_Configuracion" />
-	
-	        <Button
-	            android:id="@+id/bt_Ayuda"
-	            style="?android:attr/buttonStyleSmall"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/bt_Ayuda" />
-	
-	        <Button
-	            android:id="@+id/bt_Salir"
-	            style="?android:attr/buttonStyleSmall"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/bt_Salir" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20" >
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_gravity="center"
+	            android:orientation="vertical" >
+
+	            <Button
+	                android:id="@+id/bt_nuevoJuego"
+	                style="?android:attr/buttonStyleSmall"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="25"
+	                android:text="@string/bt_NuevoJuego" />
+
+	            <Button
+	                android:id="@+id/bt_Configuracion"
+	                style="?android:attr/buttonStyleSmall"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="25"
+	                android:text="@string/bt_Configuracion" />
+
+	            <Button
+	                android:id="@+id/bt_Ayuda"
+	                style="?android:attr/buttonStyleSmall"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="25"
+	                android:text="@string/bt_Ayuda" />
+
+	            <Button
+	                android:id="@+id/bt_Salir"
+	                style="?android:attr/buttonStyleSmall"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_weight="25"
+	                android:text="@string/bt_Salir" />
+
+	        </LinearLayout>
+
 	    </LinearLayout>
 
     </LinearLayout>

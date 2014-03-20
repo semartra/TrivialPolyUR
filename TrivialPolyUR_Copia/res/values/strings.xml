@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TrivialPolyUR</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="new_party">Nueva Partida</string>
+    <string name="configuration">Configuración</string>
+    <string name="help">Ayuda</string>
+    <string name="exit">Salida</string>
+    <string name="img_logo">imagen_logo</string>
+    <string name="bt_Ayuda">Ayuda</string>
+    <string name="bt_Salir">Salir</string>
+    <string name="bt_Configuracion">Configuración</string>
+    <string name="bt_NuevoJuego">Nuevo Juego</string>
+
+</resources>

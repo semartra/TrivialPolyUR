@@ -1,144 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <TabHost
-        android:id="@android:id/tabhost"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android1:id="@android:id/tabhost"
+        android1:layout_width="match_parent"
+        android1:layout_height="match_parent" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android1:layout_width="match_parent"
+            android1:layout_height="match_parent"
+            android1:orientation="vertical" >
 
             <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android1:id="@android:id/tabs"
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content" >
             </TabWidget>
 
             <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android1:id="@android:id/tabcontent"
+                android1:layout_width="match_parent"
+                android1:layout_height="match_parent" >
 
                 <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android1:id="@+id/tab1"
+                    android1:layout_width="match_parent"
+                    android1:layout_height="match_parent" >
 
-                    <TableLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" >
+                    <LinearLayout
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="match_parent" >
 
-                        <TableRow
-                            android:id="@+id/tableRow1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
+                        <LinearLayout
+                            android1:layout_width="202dp"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
 
-                        <TableRow
-                            android:id="@+id/tableRow2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
+                            <Spinner
+                                android1:id="@+id/spinner1"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" />
 
-                        <TableRow
-                            android:id="@+id/tableRow3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
+                            <ImageView
+                                android1:id="@+id/imageView1"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="match_parent"
+                                android1:src="@drawable/ic_launcher" />
 
-                            <Button
-                                android:id="@+id/button1"
-                                style="?android:attr/buttonStyleSmall"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/hello_world" />
+                        </LinearLayout>
 
-                        </TableRow>
+                    </LinearLayout>
 
-                        <TableRow
-                            android:id="@+id/tableRow4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-                    </TableLayout>
+                    <LinearLayout
+                        android1:layout_width="match_parent"
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="match_parent"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <Button
+                                    android1:id="@+id/button1"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="@string/atras" />
+
+                                <Button
+                                    android1:id="@+id/button4"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="Button" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView03"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="@string/Dinero"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <EditText
+                                    android1:id="@+id/EditText03"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:ems="10"
+                                    android1:enabled="false"
+                                    android1:text="@string/hello_world" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView02"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="@string/Dinero"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <EditText
+                                    android1:id="@+id/EditText02"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:ems="10"
+                                    android1:enabled="false"
+                                    android1:text="@string/hello_world" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView01"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="@string/Dinero"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <EditText
+                                    android1:id="@+id/EditText01"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:ems="10"
+                                    android1:enabled="false"
+                                    android1:text="@string/hello_world" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView1"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="@string/Dinero"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <EditText
+                                    android1:id="@+id/editText1"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:ems="10"
+                                    android1:enabled="false"
+                                    android1:text="@string/hello_world" >
+
+                                    <requestFocus />
+                                </EditText>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView2"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:text="@string/Dinero"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <EditText
+                                    android1:id="@+id/editText2"
+                                    android1:layout_width="wrap_content"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:ems="10"
+                                    android1:enabled="false"
+                                    android1:text="@string/hello_world" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android1:id="@+id/tab2"
+                    android1:layout_width="match_parent"
+                    android1:layout_height="match_parent" >
 
-                    <TableLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" >
-
-                        <TableRow
-                            android:id="@+id/tableRow5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRow6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRow7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRow8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-                    </TableLayout>
+                    <Button
+                        android1:id="@+id/button2"
+                        style="?android:attr/buttonStyleSmall"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:text="Button" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android1:id="@+id/tab3"
+                    android1:layout_width="match_parent"
+                    android1:layout_height="match_parent" >
 
-                    <TableLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" >
-
-                        <TableRow
-                            android:id="@+id/tableRow9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRow10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRow11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRow12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-                        </TableRow>
-                    </TableLayout>
+                    <Button
+                        android1:id="@+id/button3"
+                        style="?android:attr/buttonStyleSmall"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:text="Button" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android1:id="@+id/tab4"
+                    android1:layout_width="match_parent"
+                    android1:layout_height="match_parent" >
+
+                    <Button
+                        android1:id="@+id/Button01"
+                        style="?android:attr/buttonStyleSmall"
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="wrap_content"
+                        android1:text="Button" />
+                </LinearLayout>
+
             </FrameLayout>
         </LinearLayout>
     </TabHost>

@@ -24,9 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Tablero"></activity>
-        <activity android:name="MenuPrincipal"></activity>
-        <activity android:name="TableroSecundario"></activity>
+        <activity android:name="Tablero"
+        android:screenOrientation="landscape"></activity>
+        <activity android:name="MenuPrincipal"
+        android:screenOrientation="landscape"></activity>
+        <activity android:name="TableroSecundario"
+        android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

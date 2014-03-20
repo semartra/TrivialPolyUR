@@ -27,34 +27,38 @@ public final class R {
         public static final int logo_negro=0x7f020003;
     }
     public static final class id {
+        public static final int Button01=0x7f08001b;
+        public static final int EditText01=0x7f080012;
+        public static final int EditText02=0x7f080010;
+        public static final int EditText03=0x7f08000e;
         public static final int ImageView01=0x7f080003;
-        public static final int action_settings=0x7f08001b;
+        public static final int TextView01=0x7f080011;
+        public static final int TextView02=0x7f08000f;
+        public static final int TextView03=0x7f08000d;
+        public static final int action_settings=0x7f08001f;
         public static final int bt_Ayuda=0x7f080006;
         public static final int bt_Configuracion=0x7f080005;
         public static final int bt_Salir=0x7f080007;
         public static final int bt_nuevoJuego=0x7f080004;
-        public static final int button1=0x7f08000c;
-        public static final int imageView1=0x7f080019;
+        public static final int button1=0x7f08000b;
+        public static final int button2=0x7f080017;
+        public static final int button3=0x7f080019;
+        public static final int button4=0x7f08000c;
+        public static final int editText1=0x7f080013;
+        public static final int editText2=0x7f080015;
+        public static final int imageView1=0x7f08000a;
         public static final int linearLayout1=0x7f080002;
-        public static final int logo=0x7f080018;
-        public static final int progressBar1=0x7f08001a;
+        public static final int logo=0x7f08001c;
+        public static final int progressBar1=0x7f08001e;
+        public static final int spinner1=0x7f080009;
         public static final int tab1=0x7f080008;
-        public static final int tab2=0x7f08000e;
-        public static final int tab3=0x7f080013;
+        public static final int tab2=0x7f080016;
+        public static final int tab3=0x7f080018;
+        public static final int tab4=0x7f08001a;
         public static final int tableLayout1=0x7f080001;
-        public static final int tableRow1=0x7f080009;
-        public static final int tableRow10=0x7f080015;
-        public static final int tableRow11=0x7f080016;
-        public static final int tableRow12=0x7f080017;
-        public static final int tableRow2=0x7f08000a;
-        public static final int tableRow3=0x7f08000b;
-        public static final int tableRow4=0x7f08000d;
-        public static final int tableRow5=0x7f08000f;
-        public static final int tableRow6=0x7f080010;
-        public static final int tableRow7=0x7f080011;
-        public static final int tableRow8=0x7f080012;
-        public static final int tableRow9=0x7f080014;
+        public static final int tableRow2=0x7f08001d;
         public static final int textView1=0x7f080000;
+        public static final int textView2=0x7f080014;
     }
     public static final class layout {
         public static final int activity_dado=0x7f030000;
@@ -67,8 +71,10 @@ public final class R {
         public static final int main=0x7f070000;
     }
     public static final class string {
+        public static final int Dinero=0x7f05000c;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int atras=0x7f05000d;
         public static final int bt_Ayuda=0x7f050008;
         public static final int bt_Configuracion=0x7f05000a;
         public static final int bt_NuevoJuego=0x7f05000b;

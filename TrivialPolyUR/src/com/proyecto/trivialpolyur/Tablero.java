@@ -1,5 +1,6 @@
 package com.proyecto.trivialpolyur;
 
+import android.R.array;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,16 +22,15 @@ public class Tablero extends Activity {
 
 	private int resultado;
 	private boolean dobles;
+	//private Partida p;
 	
     public void aceptar(){
-    	int d1=Dado.lanzarDado();
+		int d1=Dado.lanzarDado();
 		int d2=Dado.lanzarDado();
-		
-    	Toast t=Toast.makeText(this, d1 + " ~~ " + d2, Toast.LENGTH_LONG);
+    	Toast t=Toast.makeText(this, d1 + "~~" + d2, Toast.LENGTH_LONG);
     	resultado=d1+d2;
     	dobles=(d1==d2);
-    	t.show();
-    	
+    	t.show();    	
     }
 	
     @Override
@@ -41,8 +41,8 @@ public class Tablero extends Activity {
         
         final AlertDialog.Builder dialog= new AlertDialog.Builder(this);
         dialog.setTitle("TIRAR DADOS");
-        dialog.setIcon(R.drawable.dados);
         dialog.setMessage("¡SUERTE!");
+        dialog.setIcon(R.drawable.dados);
         dialog.setCancelable(false);
         
         
@@ -61,7 +61,7 @@ public class Tablero extends Activity {
         Display d =getWindowManager().getDefaultDisplay();
         int width=d.getWidth();
         int height=d.getHeight();
-        float f=(float)1.3;
+        float f=(float)1.25;
         
         TableRow.LayoutParams params = new TableRow.LayoutParams(width/10, (int) (width/10*f));
         TableLayout table = new TableLayout(this);
@@ -206,6 +206,22 @@ public class Tablero extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+    
+    public static int[] posicionTablero(int x){
+    	int[] factorial=new int[2];
+    	switch (x) {
+		case 1:
+			factorial[0]=0;
+			factorial[1]=0;	
+			break;
+
+		default:
+			factorial[0]=0;
+			factorial[1]=0;	
+			break;
+		}
+    	return factorial;
     }
     
 }
