@@ -17,6 +17,21 @@ public class MenuPrincipal extends Activity {
         
         setContentView(R.layout.activity_main);
         
+        Button botonConfiguracion = (Button) findViewById(R.id.bt_Configuracion);
+        botonConfiguracion.setOnClickListener(new OnClickListener() {
+
+           @Override
+           public void onClick(View v) {
+              Button b=(Button) v;
+              b.setText("pulsado");
+        	   Intent intent = new Intent(MenuPrincipal.this, PantallaJugadores.class);
+        	   finish();
+              startActivity(intent);
+              //startActivityForResult(intent, 11);
+
+           }
+        });
+        
         Button boton = (Button) findViewById(R.id.bt_nuevoJuego);
         boton.setOnClickListener(new OnClickListener() {
 
@@ -25,8 +40,22 @@ public class MenuPrincipal extends Activity {
               Button b=(Button) v;
               b.setText("pulsado");
         	   Intent intent = new Intent(MenuPrincipal.this, Tablero.class);
+        	   finish();
               startActivity(intent);
               //startActivityForResult(intent, 11);
+
+           }
+        });
+        
+        Button botonSalir = (Button) findViewById(R.id.bt_Salir);
+        botonSalir.setOnClickListener(new OnClickListener() {
+
+           @Override
+           public void onClick(View v) {
+        	   //Intent intent = new Intent(Intent.ACTION_MAIN); 
+        	   //Intent intent = new Intent(MenuPrincipal.this, MainActivity.class);
+              //startActivity(intent);
+        	   finish();
 
            }
         });

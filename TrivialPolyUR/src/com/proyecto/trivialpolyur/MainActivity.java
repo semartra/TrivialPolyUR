@@ -25,6 +25,41 @@ public class MainActivity extends Activity {
         
         setContentView(R.layout.activity_splashscreen);
         
+        
+        mProgress = (ProgressBar) findViewById(R.id.progressBar1);
+
+        // Start lengthy operation in a background thread
+        new Thread(new Runnable() {
+            public void run() {
+                while (mProgressStatus < 100) {
+                    mProgressStatus = doWork(mProgressStatus);
+                    try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                    // Update the progress bar
+                    mHandler.post(new Runnable() {
+                        public void run() {
+                            mProgress.setProgress(mProgressStatus);
+                        }
+                    });
+                }
+         	   Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
+         	   
+               startActivity(intent);
+               finish();
+            }
+
+			private int doWork(int x) {
+				// TODO Auto-generated method stub
+				return x+1;
+			}
+        }).start();
+        
+        
+        
         Button boton = (Button) findViewById(R.id.button1);
         boton.setOnClickListener(new OnClickListener() {
 
@@ -33,10 +68,7 @@ public class MainActivity extends Activity {
               Button b=(Button) v;
               b.setText("pulsado");
 
-          	   Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
-                startActivity(intent);
-
-             /* mProgress = (ProgressBar) findViewById(R.id.progressBar1);
+              mProgress = (ProgressBar) findViewById(R.id.progressBar1);
 
               // Start lengthy operation in a background thread
               new Thread(new Runnable() {
@@ -44,7 +76,7 @@ public class MainActivity extends Activity {
                       while (mProgressStatus < 100) {
                           mProgressStatus = doWork(mProgressStatus);
                           try {
-      						Thread.sleep(100);
+      						Thread.sleep(10);
       					} catch (InterruptedException e) {
       						// TODO Auto-generated catch block
       						e.printStackTrace();
@@ -57,15 +89,17 @@ public class MainActivity extends Activity {
                           });
                       }
                	   Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
-                     startActivity(intent);
+               	   
+                   startActivity(intent);
+                   finish();
                   }
 
       			private int doWork(int x) {
       				// TODO Auto-generated method stub
-      				return x+1;
+      				return x+10;
       			}
               }).start();
-*/
+
            }
         });
         

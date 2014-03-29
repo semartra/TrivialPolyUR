@@ -15,5 +15,12 @@
     <string name="bt_NuevoJuego">Nuevo Juego</string>
     <string name="Dinero">Dinero</string>
     <string name="atras">Atras</string>
+    <string name="NCalles">Numero Calles</string>
+    <string name="NCarreras">Nº Carreras</string>
+    <string name="NEdificios">Nº Edificios</string>
+    <string name="TBiblioteca">T.Biblioteca</string>
+    <string name="Estudiando">Esta estudiando?</string>
+    <string name="DineroTotal">Dinero total</string>
+    <string name="Estudiando1">Estudiando?</string>
 
 </resources>

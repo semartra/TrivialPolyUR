@@ -7,5 +7,5 @@ public class Dado {
 		int numero = -1;
 		numero = (int) (Math.random()*6+1);
 		return numero;
-	} 
+	}
 }

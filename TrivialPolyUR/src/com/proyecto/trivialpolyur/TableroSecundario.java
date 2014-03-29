@@ -60,36 +60,36 @@ public class TableroSecundario extends TabActivity {
         TextView x = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
         x.setTextSize(25);
         
-        Button aux=new Button(this);
-        aux.setText("prueba");
-        ((LinearLayout)findViewById(id.tab3)).addView(aux);
-        Button boton = (Button) findViewById(R.id.button1);
+        //Button aux=new Button(this);
+        //aux.setText("prueba");
+        //((LinearLayout)findViewById(id.tab3)).addView(aux);
+        /*Button boton = (Button) findViewById(R.id.button1);
         boton.setOnClickListener(new OnClickListener() {
 
            @Override
            public void onClick(View v) {
               Button b=(Button) v;
               b.setText("pulsado");
-        	   Intent intent = new Intent(TableroSecundario.this, Tablero.class);
-              startActivity(intent);
+        	   //Intent intent = new Intent(TableroSecundario.this, Tablero.class);
+               finish();
+              //startActivity(intent);
               //startActivityForResult(intent, 11);
 
            }
-        });
+        });*/
         
-        Button boton1 = (Button) findViewById(R.id.button4);
+        /*Button boton1 = (Button) findViewById(R.id.button4);
         boton1.setOnClickListener(new OnClickListener() {
 
            @Override
            public void onClick(View v) {
               Button b=(Button) v;
-              b.setText("pulsado");
+              //b.setText("pulsado");
               ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.infantil);
-              ((TabWidget)findViewById(android.R.id.tabs)).getChildAt(3).setVisibility(View.GONE);
-
+              
            }
-        });
-        
+        });*/
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
         ArrayAdapter <CharSequence> adapter;
         adapter = new ArrayAdapter <CharSequence> (this, android.R.layout.simple_spinner_item );
@@ -112,7 +112,7 @@ public class TableroSecundario extends TabActivity {
                   //                  parent.getItemAtPosition(pos).toString());
                   String eleccion=parent.getItemAtPosition(pos).toString();
                   if(eleccion=="list 1"){
-                	  ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.infantil);
+                	  ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.ic_launcher);
                   }else if(eleccion=="list 2"){
                 	  ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.logo_negro);
                   }else if(eleccion=="list 3"){

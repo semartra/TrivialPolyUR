@@ -30,6 +30,7 @@
         android:screenOrientation="landscape"></activity>
         <activity android:name="TableroSecundario"
         android:screenOrientation="landscape"></activity>
+        <activity android:name="PantallaJugadores"></activity>
     </application>
 
 </manifest>
