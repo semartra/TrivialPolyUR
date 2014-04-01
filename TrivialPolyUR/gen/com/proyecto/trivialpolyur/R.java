@@ -62,9 +62,14 @@ public final class R {
         public static final int casilla39=0x7f020026;
         public static final int casilla40=0x7f020027;
         public static final int dados=0x7f020028;
-        public static final int exitgame=0x7f020029;
-        public static final int ic_launcher=0x7f02002a;
-        public static final int logo_negro=0x7f02002b;
+        public static final int destornillador=0x7f020029;
+        public static final int exitgame=0x7f02002a;
+        public static final int gear=0x7f02002b;
+        public static final int ic_launcher=0x7f02002c;
+        public static final int logo_negro=0x7f02002d;
+        public static final int ordenador=0x7f02002e;
+        public static final int tijeras=0x7f02002f;
+        public static final int uvas=0x7f020030;
     }
     public static final class id {
         public static final int Button01=0x7f08002e;

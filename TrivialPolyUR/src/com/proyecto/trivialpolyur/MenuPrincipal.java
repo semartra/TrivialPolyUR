@@ -39,7 +39,7 @@ public class MenuPrincipal extends Activity {
            public void onClick(View v) {
               Button b=(Button) v;
               b.setText("pulsado");
-        	   Intent intent = new Intent(MenuPrincipal.this, Tablero.class);
+        	   Intent intent = new Intent(MenuPrincipal.this, PantallaJugadores.class);
         	   finish();
               startActivity(intent);
               //startActivityForResult(intent, 11);

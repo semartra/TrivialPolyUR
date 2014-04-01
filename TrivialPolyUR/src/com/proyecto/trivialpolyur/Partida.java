@@ -19,12 +19,21 @@ public class Partida {
 	//private ArrayList<Jugador> jugadores;//Guarda un array con todos los jugadores de la partida
 	private Tablero tablero;//Guarda el tablero de la partida
 	
-	private Jugador jugador_actual;
+	//private Jugador jugador_actual;
 	
 	private int res_dado;//Guarda el resultado de la ultima tirada
 	
 	private int turno_jugador;//Guarda el jugador actual
 	private int turno_partida;
+	
+
+	public void setJugadores(HashMap<Integer,Jugador> jugadores){
+		this.jugadores=jugadores;
+	}
+	
+	public HashMap<Integer, Jugador> getJugadores(){
+		return this.jugadores;
+	}
 	
 	//-------------- CONSTRUCTORES ---------------------------------------
 	private Partida(){
@@ -35,7 +44,7 @@ public class Partida {
 		this.turno_partida=0;
 		this.turno_jugador=1;
 	}
-	
+	/*
 	public Partida(HashMap<Integer,Jugador> jugadores){
 		this.tablero=new Tablero();		
 		this.jugadores=jugadores;	
@@ -54,7 +63,7 @@ public class Partida {
 		
 		this.turno_partida=0;
 		this.turno_jugador=1;
-	}
+	}*/
 	//---------------------------------------------------------------------
 	
 	// ------------------ METODOS JUGADOR ACTUAL --------------------------
@@ -71,24 +80,13 @@ public class Partida {
 	public void Jugador_Siguiente(){
 		
 		//Guardo el JugadorActual en 'jugadores'
-		this.jugadores.put(this.turno_jugador, this.jugador_actual);
+		//this.jugadores.put(this.turno_jugador, this.jugador_actual);
 		
-		switch(this.turno_jugador){
-			case 4://Modificar el numero de jugadores es variable
-				//Siguente TurnoJugador
-				this.turno_jugador=1;				
-				break;
-			default:				
-				//Siguente TurnoJugador
-				this.Turno_Siguiente_Jugador();				
-				break;
+		if(this.jugadores.size()==this.turno_jugador){
+			this.turno_jugador=0;
 		}
-		
-		//Obtengo el siguiente Jugador
-		this.jugador_actual=this.jugadores.get(jugador_actual);
-		
-		//Incremento el Turno de la partida
-		this.Turno_Siguiente_Partida();
+		this.turno_jugador++;
+		//return this.jugadores.get(this.turno_jugador);
 		
 	}
 	

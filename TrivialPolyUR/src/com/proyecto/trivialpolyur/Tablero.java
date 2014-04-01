@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 public class Tablero extends Activity {
 
+	Button pruebas;
 	
     private String res="";
     private boolean sol=false;
@@ -91,42 +92,32 @@ public class Tablero extends Activity {
 	
     private void mover1() {
 		// TODO Auto-generated method stub
-    	int[] n=Tablero.posicionTablero(posicion);
- 
-    	if(tableroCeldas[n[1]][n[0]].getChildAt(0)!=null){
-        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(1)).getChildAt(1)).setBackgroundColor(Color.TRANSPARENT);
-        }
-        
-        posicion=posicion+1;
-    	if(posicion>41)
-            posicion=posicion-40;
-        
-    		
-    	n=Tablero.posicionTablero(posicion);
-        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(1)).getChildAt(1)).setBackgroundColor(Color.RED);
+    	Jugador JActual=Partida.Instancia().JugadorActual();
+    	int[] n=Tablero.posicionTablero(JActual.getPosicionTablero());
     	
+    	if(tableroCeldas[n[1]][n[0]].getChildAt(0)!=null){
+         	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundColor(Color.TRANSPARENT);
+        }
+
+
+    	int pos=JActual.getPosicionTablero();
+    	pos=pos+1;
+    	if(pos>41)
+            pos=pos-40;
+        
+    	n=Tablero.posicionTablero(pos);
+    	JActual.setPosicionTablero(pos);
+    	
+        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundColor(JActual.getColor());
+    	HashMap<Integer, Jugador> jugadores = Partida.Instancia().getJugadores();
+    	jugadores.remove(Partida.Instancia().Num_JugadorActual());
+    	jugadores.put(Partida.Instancia().Num_JugadorActual(), JActual);
+    	Partida.Instancia().setJugadores(jugadores);
 	}
+
     
     public void moverFicha(){
-    	/*int[] n=Tablero.posicionTablero(posicion);
     	
-    	 
-    	//Object o = null;
-    	//((FrameLayout[][])o)[0][0].setBackgroundColor(Color.GRAY);
-        if(tableroCeldas[n[1]][n[0]].getChildAt(0)!=null){
-        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(0)).getChildAt(1)).setBackgroundColor(Color.TRANSPARENT);
-        }
-        //tableroCeldas[n[1]][n[0]].removeAllViews();
-    	
-        posicion=posicion+resultado;
-    	if(posicion>41)
-            posicion=posicion-40;
-        
-    		
-    	n=Tablero.posicionTablero(posicion);
-        //tableroCeldas[n[1]][n[0]].addView(tl);
-    	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(1)).getChildAt(1)).setBackgroundColor(Color.RED);
-    	*/
     	new Thread(new Runnable() {
     	    @Override
     	    public void run() {
@@ -144,9 +135,53 @@ public class Tablero extends Activity {
     	            }
     	        });
     	    	}
+    	    	
+    	    	runOnUiThread(new Runnable() {
+    	            @Override
+    	            public void run() {
+ 	    	    	
+    	    	    	pregunta();
+
+    	    	    	//pruebas.setEnabled(false);
+    	    	    	Partida.Instancia().Jugador_Siguiente();   	    	    	
+    	            }
+    	        });
+    	    	
     	    }
     	}).start();
-    	
+    }
+    
+    public void pregunta(){
+    	final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        final Preguntas p=new Preguntas();
+		final HashMap<Integer, String[]> pr = p.pregunta();
+        final String[] items = {pr.get(3)[1],pr.get(3)[2],pr.get(3)[3],pr.get(3)[4]};
+        
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+  			
+  			public void onClick(DialogInterface dialog, int which) {
+  				// TODO Auto-generated method stub
+  				preguntar();
+  			}
+  		});
+        
+        int selected = 0; // or whatever you want
+        builder.setSingleChoiceItems(items, selected, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                      //onclick
+            	res=items[item];
+
+	              if(res==pr.get(3)[3]){
+	            	  sol=true;
+	              }else{
+	            	  sol=false;
+	              }
+            }});
+        
+        builder.setTitle(pr.get(3)[0]);
+
+        builder.show();
     }
     
     @Override
@@ -202,23 +237,47 @@ public class Tablero extends Activity {
                 LinearLayout l2=new LinearLayout(this);
                 
             	FrameLayout tableroFichas[][] = new FrameLayout[2][2];
+
+            	//if(i==0 && j==0){
+            	//HashMap<Integer,Jugador> jugadores=Partida.Instancia().getJugadores();
             	
+            	//Dialog aa=new Dialog(this);
+            	//if(jugadores!=null)aa.setTitle(jugadores.size());
+            	//aa.show();
+            	//jugadores.size();
+            	//Jugador j1=jugadores.get(1);
            	 	tableroFichas[0][0] = new FrameLayout(this);
                 tableroFichas[0][0].setLayoutParams(params1);
-                //tableroFichas[0][0].setBackgroundColor(Color.RED);
+                
+                //tableroFichas[j1.getPosicion()[0]][j1.getPosicion()[1]].setBackgroundColor(j1.getColor());
+                
+                //tableroFichas[0][0].setBackgroundColor(j1.getColor());
+                
                 
                 tableroFichas[0][1] = new FrameLayout(this);
                 tableroFichas[0][1].setLayoutParams(params1);
-                //tableroFichas[0][1].setBackgroundColor(Color.GREEN);
+                /*if(jugadores.size()>1){
+                	Jugador j2=jugadores.get(2);
+                	tableroFichas[j2.getPosicion()[0]][j2.getPosicion()[1]].setBackgroundColor(j2.getColor());
+                }*/
                 
                 tableroFichas[1][0] = new FrameLayout(this);
                 tableroFichas[1][0].setLayoutParams(params1);
+                /*if(jugadores.size()>2){
+                	Jugador j3=jugadores.get(3);
+                	tableroFichas[j3.getPosicion()[0]][j3.getPosicion()[1]].setBackgroundColor(j3.getColor());
+                }*/
                 //tableroFichas[1][0].setBackgroundColor(Color.YELLOW);
                 
                 tableroFichas[1][1] = new FrameLayout(this);
                 tableroFichas[1][1].setLayoutParams(params1);
+                /*if(jugadores.size()>3){
+                	Jugador j4=jugadores.get(4);
+                	tableroFichas[j4.getPosicion()[0]][j4.getPosicion()[1]].setBackgroundColor(j4.getColor());
+                }*/
+                
                 //tableroFichas[1][1].setBackgroundColor(Color.BLUE);
-            	
+            	//}
             	/*
             	Button b=new Button(this);
             	b.setText("Pant.Sec.");
@@ -272,6 +331,30 @@ public class Tablero extends Activity {
             
         }
         asignarImagenes();
+        
+        HashMap<Integer,Jugador> jugadores=Partida.Instancia().getJugadores();    	
+        
+        Jugador j1=jugadores.get(1);
+    	//tableroFichas[j2.getPosicion()[0]][j2.getPosicion()[1]].setBackgroundColor(j2.getColor());
+        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j1.getPosicion()[0])).getChildAt(j1.getPosicion()[1])).setBackgroundColor(j1.getColor());
+        
+    	
+        if(jugadores.size()>1){
+        	Jugador j2=jugadores.get(2);
+        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j2.getPosicion()[0])).getChildAt(j2.getPosicion()[1])).setBackgroundColor(j2.getColor());            
+        }
+        //((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[1])).getChildAt(JActual.getPosicion()[0])).setBackgroundResource(JActual.getColor());
+        
+        if(jugadores.size()>2){
+        	Jugador j3=jugadores.get(3);
+        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j3.getPosicion()[0])).getChildAt(j3.getPosicion()[1])).setBackgroundColor(j3.getColor());            
+        }
+        
+        if(jugadores.size()>3){
+        	Jugador j4=jugadores.get(4);
+        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j4.getPosicion()[0])).getChildAt(j4.getPosicion()[1])).setBackgroundColor(j4.getColor());            
+        }
+        
         Button boton=new Button(this);
         boton.setText("Tirar los dados");
         boton.setOnClickListener(new OnClickListener() {
@@ -345,11 +428,12 @@ public class Tablero extends Activity {
 			public void onClick(View v) {
 	              Button b=(Button) v;
 	              b.setText("pulsado");
-
-	              builder.show();
+	              
+	              pregunta();
+	              //builder.show();
 			}
 		});
-                
+                pruebas=boton2;
         
         TableRow tr = new TableRow(this);
         LinearLayout ll1 = new LinearLayout(this);

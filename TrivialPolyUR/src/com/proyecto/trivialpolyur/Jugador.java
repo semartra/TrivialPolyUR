@@ -6,14 +6,32 @@ public class Jugador {
 	private String nombre;
 	private int creditos;
 	private ArrayList<Tarjetas_Tablero> baraja_tarjetas_jugador = new ArrayList<Tarjetas_Tablero>();
+	private int color;
+	private int[] posicion;
 	
-	private int turno;
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
+
+	private int posicionTablero;
 	
 	public Jugador(){}
 	
 	public Jugador(String nom){
 		this.nombre=nom;
 		this.creditos=0;
+	}
+
+	public int[] getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(int[] posicion) {
+		this.posicion = posicion;
 	}
 
 	//----------- METODOS GET ------------
@@ -29,8 +47,8 @@ public class Jugador {
 		return this.baraja_tarjetas_jugador;		
 	}
 	
-	public int get_Turno(){
-		return this.turno;
+	public int getPosicionTablero(){
+		return this.posicionTablero;
 	}
 	
 	//----------- METODOS SET ------------
@@ -46,13 +64,11 @@ public class Jugador {
 		this.baraja_tarjetas_jugador=list_t;
 	}
 	
-	public void set_Turno(int t){
-		this.turno=t;
+	public void setPosicionTablero(int t){
+		this.posicionTablero=t;
 	}
 	
 	//---------- OTROS METODOS AUXILIARES ---------------
-	public void turno_menos(){
-		this.turno--;
-	}
+	
 }
 
