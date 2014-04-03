@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
         }).start();
         
         
-        
+        /*
         Button boton = (Button) findViewById(R.id.button1);
         boton.setOnClickListener(new OnClickListener() {
 
@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
               }).start();
 
            }
-        });
+        });*/
         
         //ProgressBar progressBar =(ProgressBar)findViewById(R.id.progressBar1); 
         

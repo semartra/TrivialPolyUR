@@ -162,25 +162,25 @@ public class Tablero extends Activity {
   			
   			public void onClick(DialogInterface dialog, int which) {
   				// TODO Auto-generated method stub
-  				preguntar();
-  			}
-  		});
-        
-        int selected = 0; // or whatever you want
-        builder.setSingleChoiceItems(items, selected, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int item) {
-                      //onclick
-            	res=items[item];
-
 	              if(res==pr.get(3)[3]){
 	            	  sol=true;
 	              }else{
 	            	  sol=false;
 	              }
+  				preguntar();
+  			}
+  		});
+        
+        int selected = -1; // or whatever you want
+        builder.setSingleChoiceItems(items, selected, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                      //onclick
+            	res=items[item];
             }});
         
         builder.setTitle(pr.get(3)[0]);
 
+        res="";
         builder.show();
     }
     
