@@ -47,8 +47,7 @@
                             <ImageView
                                 android1:id="@+id/imageView1"
                                 android1:layout_width="match_parent"
-                                android1:layout_height="match_parent"
-                                android1:src="@drawable/ic_launcher" />
+                                android1:layout_height="match_parent"/>
 
                         </LinearLayout>
 
@@ -68,41 +67,17 @@
                                 android1:layout_height="wrap_content" >
 
                                 <TextView
-                                    android1:id="@+id/textView2"
+                                    android1:id="@+id/textView11a"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="@string/DineroTotal"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <TextView
-                                    android1:id="@+id/textView3"
+                                    android1:id="@+id/textView11b"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android1:layout_width="match_parent"
-                                android1:layout_height="wrap_content" >
-
-                                <TextView
-                                    android1:id="@+id/TextView03"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="@string/Estudiando1"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                                <TextView
-                                    android1:id="@+id/textView4"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                             </LinearLayout>
@@ -112,41 +87,17 @@
                                 android1:layout_height="wrap_content" >
 
                                 <TextView
-                                    android1:id="@+id/TextView02"
+                                    android1:id="@+id/TextView12a"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="@string/NCarreras"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <TextView
-                                    android1:id="@+id/textView5"
+                                    android1:id="@+id/textView12b"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android1:layout_width="match_parent"
-                                android1:layout_height="wrap_content" >
-
-                                <TextView
-                                    android1:id="@+id/TextView01"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="@string/NEdificios"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                                <TextView
-                                    android1:id="@+id/textView6"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                             </LinearLayout>
@@ -156,41 +107,17 @@
                                 android1:layout_height="wrap_content" >
 
                                 <TextView
-                                    android1:id="@+id/textView1"
+                                    android1:id="@+id/TextView13a"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="@string/TBiblioteca"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <TextView
-                                    android1:id="@+id/textView7"
+                                    android1:id="@+id/textView13b"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android1:layout_width="match_parent"
-                                android1:layout_height="wrap_content" >
-
-                                <TextView
-                                    android1:id="@+id/textView8"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="Large Text"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                                <TextView
-                                    android1:id="@+id/textView13"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                             </LinearLayout>
@@ -200,41 +127,17 @@
                                 android1:layout_height="wrap_content" >
 
                                 <TextView
-                                    android1:id="@+id/textView9"
+                                    android1:id="@+id/TextView14a"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <TextView
-                                    android1:id="@+id/textView14"
+                                    android1:id="@+id/textView14b"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android1:layout_width="match_parent"
-                                android1:layout_height="wrap_content" >
-
-                                <TextView
-                                    android1:id="@+id/textView10"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="Large Text"
-                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
-
-                                <TextView
-                                    android1:id="@+id/textView15"
-                                    android1:layout_width="match_parent"
-                                    android1:layout_height="wrap_content"
-                                    android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                             </LinearLayout>
@@ -244,19 +147,17 @@
                                 android1:layout_height="wrap_content" >
 
                                 <TextView
-                                    android1:id="@+id/textView11"
+                                    android1:id="@+id/textView15a"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <TextView
-                                    android1:id="@+id/textView16"
+                                    android1:id="@+id/textView15b"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                             </LinearLayout>
@@ -266,19 +167,223 @@
                                 android1:layout_height="wrap_content" >
 
                                 <TextView
-                                    android1:id="@+id/textView12"
+                                    android1:id="@+id/textView16a"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <TextView
-                                    android1:id="@+id/textView17"
+                                    android1:id="@+id/textView16b"
                                     android1:layout_width="match_parent"
                                     android1:layout_height="wrap_content"
                                     android1:layout_weight="1"
-                                    android1:text="Large Text"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView17a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView17b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                
+                
+                
+                <LinearLayout
+                    android1:id="@+id/tab2"
+                    android1:layout_width="match_parent"
+                    android1:layout_height="match_parent" >
+
+                    <LinearLayout
+                        android1:layout_width="wrap_content"
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="202dp"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <Spinner
+                                android1:id="@+id/spinner2"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" />
+
+                            <ImageView
+                                android1:id="@+id/imageView2"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="match_parent"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android1:layout_width="match_parent"
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="match_parent"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView21a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView21b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView22a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView22b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView23a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView23b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView24a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView24b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView25a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView25b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView26a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView26b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView27a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView27b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
 
                             </LinearLayout>
@@ -290,30 +395,185 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android1:id="@+id/tab2"
-                    android1:layout_width="match_parent"
-                    android1:layout_height="match_parent" >
-
-                    <Button
-                        android1:id="@+id/button2"
-                        style="?android:attr/buttonStyleSmall"
-                        android1:layout_width="wrap_content"
-                        android1:layout_height="wrap_content"
-                        android1:text="Button" />
-
-                </LinearLayout>
-
-                <LinearLayout
                     android1:id="@+id/tab3"
                     android1:layout_width="match_parent"
                     android1:layout_height="match_parent" >
 
-                    <Button
-                        android1:id="@+id/button3"
-                        style="?android:attr/buttonStyleSmall"
+                    <LinearLayout
                         android1:layout_width="wrap_content"
-                        android1:layout_height="wrap_content"
-                        android1:text="Button" />
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="202dp"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <Spinner
+                                android1:id="@+id/spinner3"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" />
+
+                            <ImageView
+                                android1:id="@+id/imageView3"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="match_parent"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android1:layout_width="match_parent"
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="match_parent"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView31a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView31b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView32a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView32b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView33a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView33b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView34a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView34b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView35a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView35b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView36a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView36b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView37a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView37b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -322,12 +582,352 @@
                     android1:layout_width="match_parent"
                     android1:layout_height="match_parent" >
 
-                    <Button
-                        android1:id="@+id/Button01"
-                        style="?android:attr/buttonStyleSmall"
+                    <LinearLayout
                         android1:layout_width="wrap_content"
-                        android1:layout_height="wrap_content"
-                        android1:text="Button" />
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="202dp"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <Spinner
+                                android1:id="@+id/spinner4"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" />
+
+                            <ImageView
+                                android1:id="@+id/imageView4"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="match_parent"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android1:layout_width="match_parent"
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="match_parent"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView41a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView41b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView42a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView42b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView43a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView43b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/TextView44a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView44b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView45a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView45b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView46a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView46b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView47a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView47b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+                
+                <LinearLayout android1:id="@+id/tab5" android1:layout_width="match_parent" android1:layout_height="match_parent">
+                    <LinearLayout android1:layout_width="wrap_content" android1:layout_height="match_parent">
+
+                        <LinearLayout android1:layout_width="202dp" android1:layout_height="match_parent" android1:orientation="vertical">
+
+                            <Spinner android1:id="@+id/spinner5" android1:layout_width="match_parent" android1:layout_height="wrap_content" />
+
+                            <ImageView
+                                android1:id="@+id/imageView5"
+                                android1:layout_width="match_parent"
+                                android1:layout_height="match_parent" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android1:layout_width="match_parent"
+                        android1:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android1:layout_width="match_parent"
+                            android1:layout_height="match_parent"
+                            android1:orientation="vertical" >
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView51a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView51b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView52a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView52b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView53a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView53b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView54a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView54b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView55a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView55b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView56a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView56b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android1:layout_width="match_parent"
+                                android1:layout_height="wrap_content" >
+
+                                <TextView
+                                    android1:id="@+id/textView57a"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                                <TextView
+                                    android1:id="@+id/textView57b"
+                                    android1:layout_width="match_parent"
+                                    android1:layout_height="wrap_content"
+                                    android1:layout_weight="1"
+                                    android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </FrameLayout>

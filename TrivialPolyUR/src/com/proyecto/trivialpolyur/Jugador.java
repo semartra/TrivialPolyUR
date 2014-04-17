@@ -1,6 +1,8 @@
 package com.proyecto.trivialpolyur;
 import java.util.ArrayList;
 
+import android.graphics.drawable.Drawable;
+
 
 public class Jugador {
 	private String nombre;
@@ -8,7 +10,26 @@ public class Jugador {
 	private ArrayList<Tarjetas_Tablero> baraja_tarjetas_jugador = new ArrayList<Tarjetas_Tablero>();
 	private int color;
 	private int[] posicion;
+	private int ficha;
+	private ArrayList<Tarjetas_Tablero> tarjetas=new ArrayList<Tarjetas_Tablero>();
 	
+	
+	public ArrayList<Tarjetas_Tablero> getTarjetas() {
+		return tarjetas;
+	}
+
+	public void setTarjetas(ArrayList<Tarjetas_Tablero> tarjetas) {
+		this.tarjetas = tarjetas;
+	}
+
+	public int getFicha() {
+		return ficha;
+	}
+
+	public void setFicha(int ficha) {
+		this.ficha = ficha;
+	}
+
 	public int getColor() {
 		return color;
 	}

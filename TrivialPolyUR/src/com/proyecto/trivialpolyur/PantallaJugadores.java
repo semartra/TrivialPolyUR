@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +28,19 @@ public class PantallaJugadores extends Activity {
 			return Color.BLUE;
 		}else{
 			return Color.YELLOW;
+		}
+	}
+	
+	private int getImagen(String imagen){
+		if(imagen.equals("Destornillador")){
+			return com.proyecto.trivialpolyur.R.drawable.destornillador;
+		}else if(imagen.equals("Uvas")){
+			return com.proyecto.trivialpolyur.R.drawable.uvas;
+		}else if(imagen.equals("Tijeras")){
+			return com.proyecto.trivialpolyur.R.drawable.tijeras;
+		}else{
+			//return Drawable.createFromPath("@drawable/ordenador");
+			return com.proyecto.trivialpolyur.R.drawable.ordenador; 
 		}
 	}
 	
@@ -51,10 +65,10 @@ public class PantallaJugadores extends Activity {
         ArrayAdapter <CharSequence> adapter;
         adapter = new ArrayAdapter <CharSequence> (this, android.R.layout.simple_spinner_item );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.add("Rojo");
-        adapter.add("Azul");
-        adapter.add("Amarillo");
-        adapter.add("Verde");
+        adapter.add("Tijeras");
+        adapter.add("Uvas");
+        adapter.add("Destornillador");
+        adapter.add("Ordenador");
         spinner.setAdapter(adapter);
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
@@ -139,7 +153,8 @@ public class PantallaJugadores extends Activity {
         			   //d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
-        			   j1.setColor(getColor(color));
+        			   //j1.setColor(getColor(color));
+        			   j1.setFicha(getImagen(color));
         			   int[] p=new int[2];
         			   p[0]=0;
         			   p[1]=0;
@@ -165,10 +180,12 @@ public class PantallaJugadores extends Activity {
         			   d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
-        			   j1.setColor(getColor(color));
+        			   //j1.setColor(getColor(color));
+        			   j1.setFicha(getImagen(color));
         			   Jugador j2=new Jugador();
         			   j2.set_Nombre(nombre1);
-        			   j2.setColor(getColor(color1));
+        			   j2.setFicha(getImagen(color1));
+        			   //j2.setColor(getColor(color1));
         			   int[] p=new int[2];
         			   p[0]=0;
         			   p[1]=0;
@@ -202,13 +219,16 @@ public class PantallaJugadores extends Activity {
         			   d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
-        			   j1.setColor(getColor(color));
+        			   //j1.setColor(getColor(color));
+        			   j1.setFicha(getImagen(color));
         			   Jugador j2=new Jugador();
         			   j2.set_Nombre(nombre1);
-        			   j2.setColor(getColor(color1));
+        			   //j2.setColor(getColor(color1));
+        			   j2.setFicha(getImagen(color1));
         			   Jugador j3=new Jugador();
         			   j3.set_Nombre(nombre2);
-        			   j3.setColor(getColor(color2));
+        			   //j3.setColor(getColor(color2));
+        			   j3.setFicha(getImagen(color2));
         			   int[] p=new int[2];
         			   p[0]=0;
         			   p[1]=0;
@@ -251,16 +271,20 @@ public class PantallaJugadores extends Activity {
         			   //d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
-        			   j1.setColor(getColor(color));
+        			   //j1.setColor(getColor(color));
+        			   j1.setFicha(getImagen(color));
         			   Jugador j2=new Jugador();
         			   j2.set_Nombre(nombre1);
-        			   j2.setColor(getColor(color1));
+        			   //j2.setColor(getColor(color1));
+        			   j2.setFicha(getImagen(color1));
         			   Jugador j3=new Jugador();
         			   j3.set_Nombre(nombre2);
-        			   j3.setColor(getColor(color2));
+        			   //j3.setColor(getColor(color2));
+        			   j3.setFicha(getImagen(color2));
         			   Jugador j4=new Jugador();
         			   j4.set_Nombre(nombre3);
-        			   j4.setColor(getColor(color3));
+        			   //j4.setColor(getColor(color3));
+        			   j4.setFicha(getImagen(color3));
         			   int[] p=new int[2];
         			   p[0]=0;
         			   p[1]=0;

@@ -108,7 +108,7 @@ public class Tablero extends Activity {
     	n=Tablero.posicionTablero(pos);
     	JActual.setPosicionTablero(pos);
     	
-        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundColor(JActual.getColor());
+        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundResource(JActual.getFicha());
     	HashMap<Integer, Jugador> jugadores = Partida.Instancia().getJugadores();
     	jugadores.remove(Partida.Instancia().Num_JugadorActual());
     	jugadores.put(Partida.Instancia().Num_JugadorActual(), JActual);
@@ -124,7 +124,7 @@ public class Tablero extends Activity {
 
     	    	for(int i=0;i<resultado;i++){
     	    	try {
-    	            Thread.sleep(1000);
+    	            Thread.sleep(500);
     	        } catch (InterruptedException e) {
     	            e.printStackTrace();
     	        }
@@ -135,15 +135,19 @@ public class Tablero extends Activity {
     	            }
     	        });
     	    	}
-    	    	
+    	    	try {
+    	            Thread.sleep(500);
+    	        } catch (InterruptedException e) {
+    	            e.printStackTrace();
+    	        }
     	    	runOnUiThread(new Runnable() {
     	            @Override
     	            public void run() {
  	    	    	
     	    	    	pregunta();
-
-    	    	    	//pruebas.setEnabled(false);
-    	    	    	Partida.Instancia().Jugador_Siguiente();   	    	    	
+    	    	    	if(!dobles)
+        	    	    	Partida.Instancia().Jugador_Siguiente(); 
+    	    	    	//pruebas.setEnabled(false);  	    	    	
     	            }
     	        });
     	    	
@@ -155,14 +159,19 @@ public class Tablero extends Activity {
     	final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
         final Preguntas p=new Preguntas();
-		final HashMap<Integer, String[]> pr = p.pregunta();
-        final String[] items = {pr.get(3)[1],pr.get(3)[2],pr.get(3)[3],pr.get(3)[4]};
+		//final HashMap<Integer, String[]> pr = p.pregunta();
+		String cat=buscarCategoria(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+		
+		if(!cat.equals("")){
+        final String[] preg = p.getPregunta(cat);
+        //final String[] preg={"","","","","","","",""};
+        final String[] items = {preg[1],preg[2],preg[3],preg[4]};
         
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
   			
   			public void onClick(DialogInterface dialog, int which) {
   				// TODO Auto-generated method stub
-	              if(res==pr.get(3)[3]){
+	              if(res==preg[5]){
 	            	  sol=true;
 	              }else{
 	            	  sol=false;
@@ -178,10 +187,11 @@ public class Tablero extends Activity {
             	res=items[item];
             }});
         
-        builder.setTitle(pr.get(3)[0]);
+        builder.setTitle(preg[0]);
 
         res="";
         builder.show();
+		}
     }
     
     @Override
@@ -336,23 +346,24 @@ public class Tablero extends Activity {
         
         Jugador j1=jugadores.get(1);
     	//tableroFichas[j2.getPosicion()[0]][j2.getPosicion()[1]].setBackgroundColor(j2.getColor());
-        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j1.getPosicion()[0])).getChildAt(j1.getPosicion()[1])).setBackgroundColor(j1.getColor());
+        //((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j1.getPosicion()[0])).getChildAt(j1.getPosicion()[1])).setBackgroundColor(j1.getColor());
+        //((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j1.getPosicion()[0])).getChildAt(j1.getPosicion()[1])).setBackground(j1.getFicha());
+        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j1.getPosicion()[0])).getChildAt(j1.getPosicion()[1])).setBackgroundResource(j1.getFicha());
         
-    	
         if(jugadores.size()>1){
         	Jugador j2=jugadores.get(2);
-        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j2.getPosicion()[0])).getChildAt(j2.getPosicion()[1])).setBackgroundColor(j2.getColor());            
+        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j2.getPosicion()[0])).getChildAt(j2.getPosicion()[1])).setBackgroundResource(j2.getFicha());            
         }
         //((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[1])).getChildAt(JActual.getPosicion()[0])).setBackgroundResource(JActual.getColor());
         
         if(jugadores.size()>2){
         	Jugador j3=jugadores.get(3);
-        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j3.getPosicion()[0])).getChildAt(j3.getPosicion()[1])).setBackgroundColor(j3.getColor());            
+        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j3.getPosicion()[0])).getChildAt(j3.getPosicion()[1])).setBackgroundResource(j3.getFicha());            
         }
         
         if(jugadores.size()>3){
         	Jugador j4=jugadores.get(4);
-        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j4.getPosicion()[0])).getChildAt(j4.getPosicion()[1])).setBackgroundColor(j4.getColor());            
+        	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j4.getPosicion()[0])).getChildAt(j4.getPosicion()[1])).setBackgroundResource(j4.getFicha());            
         }
         
         Button boton=new Button(this);
@@ -391,7 +402,7 @@ public class Tablero extends Activity {
 		});
         
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        /*final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
         final Preguntas p=new Preguntas();
 		final HashMap<Integer, String[]> pr = p.pregunta();
@@ -419,7 +430,7 @@ public class Tablero extends Activity {
             }});
         
         builder.setTitle(pr.get(3)[0]);
-        
+        */
         Button boton2=new Button(this);
         boton2.setText("Pregunta");
         boton2.setOnClickListener(new OnClickListener() {
@@ -510,6 +521,51 @@ public class Tablero extends Activity {
         return true;
     }
     
+    public static String buscarCategoria(int[] posicion){
+		
+    	if(posicion[0]==0&&posicion[1]==1){
+    		return "magisterio";
+    		}else if(posicion[0]==0&&posicion[1]==3){
+    		return "magisterio";
+    		}else if(posicion[0]==0&&posicion[1]==6){
+    		return "ingles";
+    		}else if(posicion[0]==0&&posicion[1]==8){
+    		return "geografia";
+    		}else if(posicion[0]==0&&posicion[1]==9){
+    		return "lenguaje";
+    		}else if(posicion[0]==1&&posicion[1]==8){
+    		return "juridico";
+    		}else if(posicion[0]==1&&posicion[1]==6){
+    		return "juridico";
+    		}else if(posicion[0]==1&&posicion[1]==5){
+    		return "empresa";
+    		}else if(posicion[0]==1&&posicion[1]==1){
+    		return "turismo";
+    		}else if(posicion[0]==2&&posicion[1]==1){
+    		return "enfermeria";
+    		}else if(posicion[0]==2&&posicion[1]==3){
+    		return "";
+    		}else if(posicion[0]==2&&posicion[1]==5){
+    		return "";
+    		}else if(posicion[0]==2&&posicion[1]==6){
+    		return "";
+    		}else if(posicion[0]==2&&posicion[1]==8){
+    		return "agricola";
+    		}else if(posicion[0]==2&&posicion[1]==9){
+    		return "enologia";
+    		}else if(posicion[0]==3&&posicion[1]==8){
+    		return "quimica";
+    		}else if(posicion[0]==3&&posicion[1]==6){
+    		return "mates";
+    		}else if(posicion[0]==3&&posicion[1]==3){
+    		return "informatica";
+    		}else if(posicion[0]==3&&posicion[1]==5){
+    		return "informatica";
+    		}else{
+    		return "";
+    		}
+   	
+    }
     
     public static int[] posicionTablero(int x){
     	int[] posicion=new int[2];
