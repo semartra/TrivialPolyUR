@@ -1,8 +1,10 @@
 package com.proyecto.trivialpolyur;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.R.array;
+import android.R.bool;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,7 +30,7 @@ import android.widget.Toast;
 
 public class Tablero extends Activity {
 
-	Button pruebas;
+	//Button pruebas;
 	
     private String res="";
     private boolean sol=false;
@@ -70,12 +72,41 @@ public class Tablero extends Activity {
 	  return super.onKeyDown(keyCode, event);
 	} 
 	
+	//final Button botonComprar=new Button(this);
+	//final Button boton=new Button(this);//tirar los dados
+    //final Button botonPagar=new Button(this);
+    
+	/*Button botonComprar=new Button(this);
+	Button boton=new Button(this);//tirar los dados
+    Button botonPagar=new Button(this);
+    Button boton2=new Button(this);//pasar turno
+    Button boton1=new Button(this);//cambiar Pantalla
+	*/
+	Button botonComprar;
+	Button boton;//tirar los dados
+    Button botonPagar;
+    Button boton2;//pasar turno
+    Button boton1;//cambiar Pantalla
+	
+    Tarjetas_Sorpresa ts=new Tarjetas_Sorpresa();
+    
+	
 	public void preguntar(){
         final Dialog ventana = new Dialog(this);
 		if(sol){
-			ventana.setTitle("acierto"); 
+			ventana.setTitle("acierto");
+			buscarTarjeta(Partida.Instancia().JugadorActual().getPosicion());
+			int iden=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+			
+			if(estaTajeta(iden)){
+				botonComprar.setEnabled(true);	
+			}else{
+				//LA TARJETA YA ESTA COMPRADA
+			}
+			boton2.setEnabled(true);
 		}else{
-			ventana.setTitle("fallo"); 
+			ventana.setTitle("fallo");
+			boton2.setEnabled(true);
 		}
 		ventana.show();		
 	}
@@ -102,8 +133,20 @@ public class Tablero extends Activity {
 
     	int pos=JActual.getPosicionTablero();
     	pos=pos+1;
-    	if(pos>41)
-            pos=pos-40;
+    	if(pos>41){
+
+			/*
+			Jugador j=Partida.Instancia().JugadorActual();
+			j.set_Creditos(j.get_Creditos()+2000);
+			Partida.Instancia().setJugadorActual(j);
+				
+			AlertDialog ad = new AlertDialog.Builder(this).create();
+			ad.setTitle("!!SÁLIDA¡¡");
+			ad.setMessage("enhorabuena acabas de pasar por la salida cobras 2000");
+			ad.show();
+			*/
+    		pos=pos-40;
+    	}
         
     	n=Tablero.posicionTablero(pos);
     	JActual.setPosicionTablero(pos);
@@ -145,8 +188,6 @@ public class Tablero extends Activity {
     	            public void run() {
  	    	    	
     	    	    	pregunta();
-    	    	    	if(!dobles)
-        	    	    	Partida.Instancia().Jugador_Siguiente(); 
     	    	    	//pruebas.setEnabled(false);  	    	    	
     	            }
     	        });
@@ -191,7 +232,27 @@ public class Tablero extends Activity {
 
         res="";
         builder.show();
+		}else{
+			String cas=Casilla(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+			if(cas.equals("sorpresa")){
+				String[] s=ts.recompensa();
+				String valor=s[1];
+				String texto=s[0];
+				String[] mm={"",""};
+				
+				Jugador j=Partida.Instancia().JugadorActual();
+				j.set_Creditos(j.get_Creditos()+Integer.parseInt(valor));
+				Partida.Instancia().setJugadorActual(j);
+				
+				AlertDialog ad = new AlertDialog.Builder(this).create();
+				ad.setTitle("!!SUERTE¡¡");
+				ad.setMessage(texto);
+				ad.show();
+				
+			}
 		}
+		
+		this.boton2.setEnabled(true);
     }
     
     @Override
@@ -199,7 +260,23 @@ public class Tablero extends Activity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
-        
+        final Button botonComprar=new Button(this);
+    	final Button boton=new Button(this);//tirar los dados
+        final Button botonPagar=new Button(this);
+        Button boton2=new Button(this);//pasar turno
+        Button boton1=new Button(this);//cambiar Pantalla
+    	
+        this.botonComprar=botonComprar;
+    	this.boton=boton;
+    	this.boton2=boton2;
+    	this.boton1=boton1;
+    	this.botonPagar=botonPagar;
+    	
+    	botonComprar.setEnabled(false);
+    	boton2.setEnabled(false);
+    	botonPagar.setEnabled(false);
+    	
+    	
         final AlertDialog.Builder dialog= new AlertDialog.Builder(this);
         dialog.setTitle("TIRAR LOS DADOS");
         dialog.setIcon(R.drawable.dados);
@@ -211,6 +288,7 @@ public class Tablero extends Activity {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
+				
 				aceptar();
 			}
 		});
@@ -366,14 +444,15 @@ public class Tablero extends Activity {
         	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(j4.getPosicion()[0])).getChildAt(j4.getPosicion()[1])).setBackgroundResource(j4.getFicha());            
         }
         
-        Button boton=new Button(this);
+        //final Button boton=new Button(this);
         boton.setText("Tirar los dados");
         boton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 	              Button b=(Button) v;
-	              b.setText("pulsado");
+	              //b.setText("pulsado");
+	              b.setEnabled(false);
 	        	  //Intent intent = new Intent(Tablero.this, TableroSecundario.class);
 	              //startActivity(intent);
 
@@ -385,18 +464,15 @@ public class Tablero extends Activity {
 		});
         
         
-        Button boton1=new Button(this);
+        //Button boton1=new Button(this);
         boton1.setText("Cambiar de pantalla");
         boton1.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-	              Button b=(Button) v;
-	              b.setText("pulsado");
+	              //Button b=(Button) v;
+	              //b.setText("pulsado");
 	        	  Intent intent = new Intent(Tablero.this, TableroSecundario.class);
-
-
-	        	  
 	        	  startActivity(intent);   
 			}
 		});
@@ -431,26 +507,80 @@ public class Tablero extends Activity {
         
         builder.setTitle(pr.get(3)[0]);
         */
-        Button boton2=new Button(this);
-        boton2.setText("Pregunta");
+        
+        //final Button botonComprar=new Button(this);
+        botonComprar.setText("Comprar");
+        botonComprar.setOnClickListener(new OnClickListener() {
+        		
+			@Override
+			public void onClick(View v) {
+
+				Button b=(Button) v;
+	            b.setEnabled(false);
+	              
+				int iden=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				//Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaCategoria(cat);
+				Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaIden(iden);
+				
+				Jugador j=Partida.Instancia().JugadorActual();
+				j.ComprarTarjetas(tar);
+				Partida.Instancia().setJugadorActual(j);
+				//j.getTarjetas().get(0);
+				//Partida.Instancia().JugadorActual().getTarjetas().get(0);
+				tar.get_Creditos();
+				ArrayList<Tarjetas_Tablero> tt = Partida.Instancia().tarjetas;
+				tt.remove(tarjetaPosicion(iden));
+				//tt.remove(3);
+				Partida.Instancia().tarjetas=tt;
+
+
+			}
+		});
+        
+        
+        //final Button botonPagar=new Button(this);
+        botonPagar.setText("Pagar");
+        botonPagar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Button b=(Button) v;
+	            b.setEnabled(false);
+	            
+
+			}
+		});
+        
+        
+        
+        //Button boton2=new Button(this);
+        boton2.setText("Pasar turno");
         boton2.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-	              Button b=(Button) v;
-	              b.setText("pulsado");
-	              
-	              pregunta();
+				Button b=(Button)v;
+				b.setEnabled(false);
+    	    	if(!dobles)
+	    	    	Partida.Instancia().Jugador_Siguiente(); 
+    	    	botonComprar.setEnabled(false);
+    	    	botonPagar.setEnabled(false);
+    	    	boton.setEnabled(true);
+	              //pregunta();
 	              //builder.show();
+	              
+	              
 			}
 		});
-                pruebas=boton2;
+                //pruebas=boton2;
         
         TableRow tr = new TableRow(this);
         LinearLayout ll1 = new LinearLayout(this);
         ll1.addView(boton);
         ll1.addView(boton1);
         ll1.addView(boton2);
+        ll1.addView(botonComprar);
+        ll1.addView(botonPagar);
         tr.addView(ll1);
         
         LinearLayout ll = new LinearLayout(this);
@@ -461,7 +591,47 @@ public class Tablero extends Activity {
         setContentView(ll);
     }
     
-    public void asignarImagenes(){
+    /*protected Tarjetas_Tablero tarjetaCategoria(String cat) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().tarjetas){
+    		if(tarjeta.get_Categoria().equals(cat)){
+    			return tarjeta;
+    		}
+    	}
+		return Partida.Instancia().tarjetas.get(1);
+	}*/
+
+    protected Tarjetas_Tablero tarjetaIden(int iden) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().tarjetas){
+    		if(tarjeta.get_Id()==iden){
+    			return tarjeta;
+    		}
+    	}
+		return null;
+	}
+    
+    protected int tarjetaPosicion(int iden) {
+    	int i=0;
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().tarjetas){
+    		if(tarjeta.get_Id()==iden){
+    			return i;
+    		}
+    		i++;
+    	}
+		return 0;
+	}
+    
+    
+    protected boolean estaTajeta(int iden) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().tarjetas){
+    		if(tarjeta.get_Id()==iden){
+    			return true;
+    		}
+    	}
+		return false;
+	}
+    
+    
+	public void asignarImagenes(){
     	int[] posicion;
     	int cas;
     	for(cas=1;cas<=40;cas++)
@@ -521,49 +691,125 @@ public class Tablero extends Activity {
         return true;
     }
     
+public static int buscarTarjeta(int[] posicion){
+		
+    	if(posicion[0]==0&&posicion[1]==1){
+    		return 1;
+    	}else if(posicion[0]==0&&posicion[1]==3){
+    		return 2;
+    	}else if(posicion[0]==0&&posicion[1]==6){
+    		return 3;
+    	}else if(posicion[0]==0&&posicion[1]==8){
+    		return 4;
+    	}else if(posicion[0]==0&&posicion[1]==9){
+    		return 5;
+    	}else if(posicion[0]==1&&posicion[1]==8){
+    		return 6;
+    	}else if(posicion[0]==1&&posicion[1]==6){
+    		return 7;
+    	}else if(posicion[0]==1&&posicion[1]==5){
+    		return 8;
+    	}else if(posicion[0]==1&&posicion[1]==3){
+    		return 9;
+    	}else if(posicion[0]==1&&posicion[1]==1){
+    		return 10;
+    	}else if(posicion[0]==2&&posicion[1]==1){
+    		return 11;
+    	}else if(posicion[0]==2&&posicion[1]==3){
+    		return 12;
+    	}else if(posicion[0]==2&&posicion[1]==5){
+    		return 13;
+    	}else if(posicion[0]==2&&posicion[1]==6){
+    		return 14;
+    	}else if(posicion[0]==2&&posicion[1]==8){
+    		return 15;
+    	}else if(posicion[0]==2&&posicion[1]==9){
+    		return 16;
+    	}else if(posicion[0]==3&&posicion[1]==8){
+    		return 17;
+    	}else if(posicion[0]==3&&posicion[1]==6){
+    		return 18;
+    	}else if(posicion[0]==3&&posicion[1]==5){
+    		return 19;
+    	}else if(posicion[0]==3&&posicion[1]==3){
+    		return 20;
+    	}else if(posicion[0]==3&&posicion[1]==0){
+    		return 21;
+    	}else if(posicion[0]==1&&posicion[1]==0){
+    		return 22;
+    	}else{
+    		return 1;
+    	}
+   	
+    }
+    
+public static String Casilla(int[] posicion){
+	if(posicion[0]==0&&posicion[1]==2){
+		return "sorpresa";
+	}else if(posicion[0]==0&&posicion[1]==7){
+		return "sorpresa";
+	}else if(posicion[0]==1&&posicion[1]==2){
+		return "sorpresa";
+	}else if(posicion[0]==2&&posicion[1]==4){
+		return "sorpresa";
+	}else if(posicion[0]==3&&posicion[1]==1){
+		return "sorpresa";
+	}else if(posicion[0]==3&&posicion[1]==4){
+		return "sorpresa";
+	}else{
+		return "";
+	}
+}
+    
     public static String buscarCategoria(int[] posicion){
 		
     	if(posicion[0]==0&&posicion[1]==1){
     		return "magisterio";
-    		}else if(posicion[0]==0&&posicion[1]==3){
+    	}else if(posicion[0]==0&&posicion[1]==3){
     		return "magisterio";
-    		}else if(posicion[0]==0&&posicion[1]==6){
+    	}else if(posicion[0]==0&&posicion[1]==6){
     		return "ingles";
-    		}else if(posicion[0]==0&&posicion[1]==8){
+    	}else if(posicion[0]==0&&posicion[1]==8){
     		return "geografia";
-    		}else if(posicion[0]==0&&posicion[1]==9){
+    	}else if(posicion[0]==0&&posicion[1]==9){
     		return "lenguaje";
-    		}else if(posicion[0]==1&&posicion[1]==8){
+    	}else if(posicion[0]==1&&posicion[1]==8){
     		return "juridico";
-    		}else if(posicion[0]==1&&posicion[1]==6){
+    	}else if(posicion[0]==1&&posicion[1]==6){
     		return "juridico";
-    		}else if(posicion[0]==1&&posicion[1]==5){
+    	}else if(posicion[0]==1&&posicion[1]==5){
+    		return "juridico";
+    	}else if(posicion[0]==1&&posicion[1]==3){
     		return "empresa";
-    		}else if(posicion[0]==1&&posicion[1]==1){
+    	}else if(posicion[0]==1&&posicion[1]==1){
     		return "turismo";
-    		}else if(posicion[0]==2&&posicion[1]==1){
+    	}else if(posicion[0]==2&&posicion[1]==1){
     		return "enfermeria";
-    		}else if(posicion[0]==2&&posicion[1]==3){
-    		return "";
-    		}else if(posicion[0]==2&&posicion[1]==5){
-    		return "";
-    		}else if(posicion[0]==2&&posicion[1]==6){
-    		return "";
-    		}else if(posicion[0]==2&&posicion[1]==8){
+    	}else if(posicion[0]==2&&posicion[1]==3){
+    		return "industrial";
+    	}else if(posicion[0]==2&&posicion[1]==5){
+    		return "industrial";
+    	}else if(posicion[0]==2&&posicion[1]==6){
+    		return "industrial";
+    	}else if(posicion[0]==2&&posicion[1]==8){
     		return "agricola";
-    		}else if(posicion[0]==2&&posicion[1]==9){
+    	}else if(posicion[0]==2&&posicion[1]==9){
     		return "enologia";
-    		}else if(posicion[0]==3&&posicion[1]==8){
+    	}else if(posicion[0]==3&&posicion[1]==8){
     		return "quimica";
-    		}else if(posicion[0]==3&&posicion[1]==6){
+    	}else if(posicion[0]==3&&posicion[1]==6){
     		return "mates";
-    		}else if(posicion[0]==3&&posicion[1]==3){
+    	}else if(posicion[0]==3&&posicion[1]==3){
     		return "informatica";
-    		}else if(posicion[0]==3&&posicion[1]==5){
+    	}else if(posicion[0]==3&&posicion[1]==5){
     		return "informatica";
-    		}else{
+    	}else if(posicion[0]==1&&posicion[1]==0){
+    		return "experiencia";
+    	}else if(posicion[0]==3&&posicion[1]==0){
+    		return "experiancia";
+    	}else{
     		return "";
-    		}
+    	}
    	
     }
     

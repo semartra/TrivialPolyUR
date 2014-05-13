@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 public class Jugador {
 	private String nombre;
 	private int creditos;
-	private ArrayList<Tarjetas_Tablero> baraja_tarjetas_jugador = new ArrayList<Tarjetas_Tablero>();
+	//private ArrayList<Tarjetas_Tablero> baraja_tarjetas_jugador = new ArrayList<Tarjetas_Tablero>();
 	private int color;
 	private int[] posicion;
 	private int ficha;
@@ -64,9 +64,9 @@ public class Jugador {
 		return this.creditos;
 	}
 	
-	public ArrayList<Tarjetas_Tablero> get_ListadoTarjetas(){
+	/*public ArrayList<Tarjetas_Tablero> get_ListadoTarjetas(){
 		return this.baraja_tarjetas_jugador;		
-	}
+	}*/
 	
 	public int getPosicionTablero(){
 		return this.posicionTablero;
@@ -80,16 +80,19 @@ public class Jugador {
 	public void set_Creditos(int cred){
 		this.creditos=cred;
 	}
-	
+	/*
 	public void set_ListadoTarjetas(ArrayList<Tarjetas_Tablero> list_t){
 		this.baraja_tarjetas_jugador=list_t;
-	}
+	}*/
 	
 	public void setPosicionTablero(int t){
 		this.posicionTablero=t;
 	}
 	
 	//---------- OTROS METODOS AUXILIARES ---------------
+	public void ComprarTarjetas(Tarjetas_Titulaciones tarjetas){
+		this.tarjetas.add(tarjetas);
+	}
 	
 }
 

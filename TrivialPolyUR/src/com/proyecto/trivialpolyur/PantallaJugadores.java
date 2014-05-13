@@ -33,14 +33,14 @@ public class PantallaJugadores extends Activity {
 	
 	private int getImagen(String imagen){
 		if(imagen.equals("Destornillador")){
-			return com.proyecto.trivialpolyur.R.drawable.destornillador;
+			return com.proyecto.trivialpolyur.R.drawable.destornillador1;
 		}else if(imagen.equals("Uvas")){
-			return com.proyecto.trivialpolyur.R.drawable.uvas;
+			return com.proyecto.trivialpolyur.R.drawable.uvas1;
 		}else if(imagen.equals("Tijeras")){
-			return com.proyecto.trivialpolyur.R.drawable.tijeras;
+			return com.proyecto.trivialpolyur.R.drawable.tijeras1;
 		}else{
 			//return Drawable.createFromPath("@drawable/ordenador");
-			return com.proyecto.trivialpolyur.R.drawable.ordenador; 
+			return com.proyecto.trivialpolyur.R.drawable.ordenador1; 
 		}
 	}
 	
