@@ -80,6 +80,13 @@ public class TableroSecundario extends TabActivity {
         	spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(new SpinnerListener());
             
+
+            ((TextView) findViewById(R.id.textView18a)).setText("Creditos disponibles");
+            ((TextView) findViewById(R.id.textView18b)).setText(Partida.Instancia().jugadores.get(1).get_Creditos()+"");
+            ((TextView) findViewById(R.id.textView191a)).setText("Nº Edificios");
+            ((TextView) findViewById(R.id.textView191b)).setText(Partida.Instancia().jugadores.get(1).getTarjetasEdificio().size()+"");
+            ((TextView) findViewById(R.id.textView192a)).setText("Nº Servicios");
+            ((TextView) findViewById(R.id.textView192b)).setText(Partida.Instancia().jugadores.get(1).getTarjetasServicio().size()+"");
             
             /*Spinner spinner = (Spinner) findViewById(R.id.spinner5);
             ArrayAdapter <CharSequence> adapter;
@@ -110,7 +117,13 @@ public class TableroSecundario extends TabActivity {
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(new SpinnerListener1());
 
-        	
+
+            ((TextView) findViewById(R.id.textView28a)).setText("Creditos disponibles");
+            ((TextView) findViewById(R.id.textView28b)).setText(Partida.Instancia().jugadores.get(2).get_Creditos()+"");
+            ((TextView) findViewById(R.id.textView291a)).setText("Nº Edificios");
+            ((TextView) findViewById(R.id.textView291b)).setText(Partida.Instancia().jugadores.get(2).getTarjetasEdificio().size()+"");
+            ((TextView) findViewById(R.id.textView292a)).setText("Nº Servicios");
+            ((TextView) findViewById(R.id.textView292b)).setText(Partida.Instancia().jugadores.get(2).getTarjetasServicio().size()+"");
         }
         
         if(numJug>2){
@@ -128,6 +141,13 @@ public class TableroSecundario extends TabActivity {
         	spinner.setAdapter(adapter);
         	spinner.setOnItemSelectedListener(new SpinnerListener2());
 
+
+            ((TextView) findViewById(R.id.textView38a)).setText("Creditos disponibles");
+            ((TextView) findViewById(R.id.textView38b)).setText(Partida.Instancia().jugadores.get(3).get_Creditos()+"");
+            ((TextView) findViewById(R.id.textView391a)).setText("Nº Edificios");
+            ((TextView) findViewById(R.id.textView391b)).setText(Partida.Instancia().jugadores.get(3).getTarjetasEdificio().size()+"");
+            ((TextView) findViewById(R.id.textView392a)).setText("Nº Servicios");
+            ((TextView) findViewById(R.id.textView392b)).setText(Partida.Instancia().jugadores.get(3).getTarjetasServicio().size()+"");
         }
         
         if(numJug>3){
@@ -138,13 +158,21 @@ public class TableroSecundario extends TabActivity {
             adapter = new ArrayAdapter <CharSequence> (this, android.R.layout.simple_spinner_item );
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             
-            //ArrayList<Tarjetas_Tablero> tarjetas=jugadores.get(4).getTarjetas();
-            ArrayList<Tarjetas_Tablero> tarjetas=Partida.Instancia().tarjetas;
+            ArrayList<Tarjetas_Tablero> tarjetas=jugadores.get(4).getTarjetas();
+            //ArrayList<Tarjetas_Tablero> tarjetas=Partida.Instancia().tarjetas;
             for(Tarjetas_Tablero t:tarjetas){
             	adapter.add(t.get_Categoria());
             }
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(new SpinnerListener3());
+            
+
+            ((TextView) findViewById(R.id.textView48a)).setText("Creditos disponibles");
+            ((TextView) findViewById(R.id.textView48b)).setText(Partida.Instancia().jugadores.get(4).get_Creditos()+"");
+            ((TextView) findViewById(R.id.textView491a)).setText("Nº Edificios");
+            ((TextView) findViewById(R.id.textView491b)).setText(Partida.Instancia().jugadores.get(4).getTarjetasEdificio().size()+"");
+            ((TextView) findViewById(R.id.textView492a)).setText("Nº Servicios");
+            ((TextView) findViewById(R.id.textView492b)).setText(Partida.Instancia().jugadores.get(4).getTarjetasServicio().size()+"");
 
         }
         
@@ -164,9 +192,14 @@ public class TableroSecundario extends TabActivity {
         spinner.setOnItemSelectedListener(new SpinnerListener5());
         
         
-        TextView x = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
-        x.setTextSize(25);
+        //TextView x = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
+        //x.setTextSize(25);
         
+
+        ((TextView) findViewById(R.id.textView591a)).setText("Nº Edificios");
+        ((TextView) findViewById(R.id.textView591b)).setText(Partida.Instancia().tarjetasEdificio.size()+"");
+        ((TextView) findViewById(R.id.textView592a)).setText("Nº Servicios");
+        ((TextView) findViewById(R.id.textView592b)).setText(Partida.Instancia().tarjetasServicio.size()+"");
         //Button aux=new Button(this);
         //aux.setText("prueba");
         //((LinearLayout)findViewById(id.tab3)).addView(aux);
@@ -296,6 +329,8 @@ public class TableroSecundario extends TabActivity {
                   ((TextView) findViewById(R.id.textView16b)).setText(tarTit.get_Mat4()+"");
                   ((TextView) findViewById(R.id.textView17a)).setText("Matricula 5");
                   ((TextView) findViewById(R.id.textView17b)).setText(tarTit.get_Licenciado()+"");
+                  ((TextView) findViewById(R.id.textView18a)).setText("Creditos disponibles");
+                  ((TextView) findViewById(R.id.textView18b)).setText(Partida.Instancia().jugadores.get(1).get_Creditos()+"");
                   
                   /*if(eleccion=="Magisterio infantil"){
                 	  ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.ic_launcher);
@@ -341,6 +376,8 @@ public class TableroSecundario extends TabActivity {
                   ((TextView) findViewById(R.id.textView26b)).setText(tarTit.get_Mat4()+"");
                   ((TextView) findViewById(R.id.textView27a)).setText("Matricula 5");
                   ((TextView) findViewById(R.id.textView27b)).setText(tarTit.get_Licenciado()+"");
+                  ((TextView) findViewById(R.id.textView28a)).setText("Creditos disponibles");
+                  ((TextView) findViewById(R.id.textView28b)).setText(Partida.Instancia().jugadores.get(2).get_Creditos()+"");
                   
                   /*if(eleccion=="Magisterio infantil"){
                 	  ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.ic_launcher);
@@ -386,6 +423,8 @@ public class TableroSecundario extends TabActivity {
                   ((TextView) findViewById(R.id.textView36b)).setText(tarTit.get_Mat4()+"");
                   ((TextView) findViewById(R.id.textView37a)).setText("Matricula 5");
                   ((TextView) findViewById(R.id.textView37b)).setText(tarTit.get_Licenciado()+"");
+                  ((TextView) findViewById(R.id.textView38a)).setText("Creditos disponibles");
+                  ((TextView) findViewById(R.id.textView38b)).setText(Partida.Instancia().jugadores.get(3).get_Creditos()+"");
                   
                   /*if(eleccion=="Magisterio infantil"){
                 	  ((ImageView) findViewById(R.id.imageView1)).setImageResource(R.drawable.ic_launcher);

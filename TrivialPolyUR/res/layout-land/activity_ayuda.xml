@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:src="@drawable/logo_negro" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+            
+			<TextView
+			    android:id="@+id/textView1"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="Ayuda"
+			    android:textAppearance="?android:attr/textAppearanceLarge"
+			    android:textStyle="bold|italic" />
+
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="=> Este juego es una mezcla de 2 de los mas populares juegos de mesa, el TRIVIAL y el MONOPOLY, pero ambientado en la universidad de la Rioja."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip"
+             />
+        
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> A este juego pueden jugar hasta un maximo de 4 jugadores."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Este juego consta de 40 casillas en las que se dispone de titulaciones, secretaría (banca), tarjetas sorpresa... "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Las CASILLAS de EDIFICIOS y de TITULACIONES se pueden comprar mediante creditos ECTS, y cobraran alquiler a todo jugador no propietario que caiga en ellas."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> La moneda de cambio es el credito ECTS, el que consiga todos las titulaciones gana."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Las TITULACIONES constan de varios niveles llamados matriculaciones, cuando se tengan todos los niveles, se considerara la titulacion 'terminada', cada usuario que caiga y no la posea deberá pagar un alquiler."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Las CASILLAS DE EDIFICIOS pueden ser poseidas por los jugadores, el coste de caer en estas casillas es directamente proporcional al numero de casillas que tenga el propietario de la casilla. "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Las CASILLAS DE IMPUESTOS no pertenecen a ningun jugador, si se cae en ellas hay que pagar una cantidad determinada, esta cantidad se añade a Secretaria (Banca)."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Las CASILLAS SORPRESA generaran sorpresas tanto positivas como negativas al jugador que caiga en ellas."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

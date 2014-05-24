@@ -5,6 +5,7 @@ import java.util.HashMap;
 import android.R.string;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -161,7 +162,10 @@ public class PantallaJugadores extends Activity {
         			   j1.setPosicion(p);
         			   HashMap<Integer, Jugador> jugadores=new HashMap<Integer, Jugador>();
         			   jugadores.put(1, j1);
+        			   
         			   Partida.Instancia().setJugadores(jugadores);
+        			   
+
         			   Intent intent = new Intent(PantallaJugadores.this, Tablero.class);
                 	   finish();
                        startActivity(intent);
@@ -242,15 +246,15 @@ public class PantallaJugadores extends Activity {
         			   p2[1]=0;
         			   j3.setPosicion(p2);
         			   HashMap<Integer, Jugador> jugadores=new HashMap<Integer, Jugador>();
-        			   //jugadores.put(1, j1);
+        			   jugadores.put(1, j1);
         			   Partida.Instancia().setJugadores(jugadores);
-        			   //jugadores.put(2, j2);
+        			   jugadores.put(2, j2);
         			   Partida.Instancia().setJugadores(jugadores);
         			   jugadores.put(3, j3);
         			   Partida.Instancia().setJugadores(jugadores);
         			   Intent intent = new Intent(PantallaJugadores.this, Tablero.class);
                 	   finish();
-                      startActivity(intent);
+                	   startActivity(intent);
         		   }
             	   
         	   }

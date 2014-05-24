@@ -9,11 +9,43 @@ public class Tarjetas_Titulaciones extends Tarjetas_Tablero{
 		private int matricula3;//Coste para aprobar tercer año
 		private int matricula4;//Coste para aprobar cuarto año
 		private int licenciado;//Coste por terminar la carrera
+		private int nivel;
+		private int[] imagenNiveles;
 				
+		public int[] getImagenNiveles() {
+			return imagenNiveles;
+		}
+
+		public void setImagenNiveles(int[] imagenNiveles) {
+			this.imagenNiveles = imagenNiveles;
+		}
+
+		public int getNivel() {
+			return nivel;
+		}
+
+		public void setNivel(int nivel) {
+			this.nivel = nivel;
+		}
+
+		public void subirNivel(){
+			nivel++;
+		}
+		
 		private int costeEstrella;
-		public Tarjetas_Titulaciones(int id, String cat, String des, int cred, int imagen,int precioEstrella,int m0, int m1, int m2, int m3, int m4, int licen){
+		public int getCosteEstrella() {
+			return costeEstrella;
+		}
+
+		public void setCosteEstrella(int costeEstrella) {
+			this.costeEstrella = costeEstrella;
+		}
+
+		public Tarjetas_Titulaciones(int id, String cat, String des, int cred, int imagen,int precioEstrella,int m0, int m1, int m2, int m3, int m4, int licen, int[] imaNiv){
 			super(id, cat, des, cred, imagen);
 		
+			this.nivel=0;
+			this.imagenNiveles=imaNiv;
 			this.costeEstrella=precioEstrella;
 			this.matricula1=m1;
 			this.matricula2=m2;

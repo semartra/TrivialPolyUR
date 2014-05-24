@@ -6,7 +6,44 @@ import android.graphics.drawable.Drawable;
 
 public class Jugador {
 	private String nombre;
-	private int creditos;
+	private int creditos=20000;
+	private int turnos=0;
+	private boolean activo=true;
+	private ArrayList<Tarjetas_Edificios> tarjetasEdificio=new ArrayList<Tarjetas_Edificios>();
+	private ArrayList<Tarjetas_Servicios> tarjetasServicio=new ArrayList<Tarjetas_Servicios>();
+	
+	public ArrayList<Tarjetas_Edificios> getTarjetasEdificio() {
+		return tarjetasEdificio;
+	}
+
+	public ArrayList<Tarjetas_Servicios> getTarjetasServicio() {
+		return tarjetasServicio;
+	}
+
+	public void setTarjetasServicio(ArrayList<Tarjetas_Servicios> tarjetasServicio) {
+		this.tarjetasServicio = tarjetasServicio;
+	}
+
+	public void setTarjetasEdificio(ArrayList<Tarjetas_Edificios> tarjetasEdificio) {
+		this.tarjetasEdificio = tarjetasEdificio;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public int getTurnos() {
+		return turnos;
+	}
+
+	public void setTurnos(int turnos) {
+		this.turnos = turnos;
+	}
+
 	//private ArrayList<Tarjetas_Tablero> baraja_tarjetas_jugador = new ArrayList<Tarjetas_Tablero>();
 	private int color;
 	private int[] posicion;

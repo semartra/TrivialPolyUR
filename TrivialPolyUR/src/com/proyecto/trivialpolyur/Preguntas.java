@@ -110,8 +110,6 @@ public class Preguntas {
 		enfermeria.put(3, enfermeriaL3);
 		String[] enfermeriaL4={	"¿Qué células son responsables de la reabsorción del tejido óseo?","Osteoclastos","Osteocitos","Adipocitos","Osteoblastos","Osteoclastos"};
 		enfermeria.put(4, enfermeriaL4);
-		String[] enfermeriaL5={"En una serie con los días de cada mes del año, ¿cuál es la moda?","7","12","31","30","31"};
-		enfermeria.put(5, enfermeriaL5);
 		
 		
 		String[] inglesL1={	"¿Cual de los siguientes objetos podemos encontrar en una casa?","Table","Car","Sun","Pool","Table"};

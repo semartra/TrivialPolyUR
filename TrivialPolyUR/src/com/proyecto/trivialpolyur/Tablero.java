@@ -37,7 +37,6 @@ public class Tablero extends Activity {
     
 	private int resultado;
 	private boolean dobles;
-	//private Partida p;
 	FrameLayout tableroCeldas[][];
 	int posicion=0;
 	
@@ -87,10 +86,80 @@ public class Tablero extends Activity {
     Button botonPagar;
     Button boton2;//pasar turno
     Button boton1;//cambiar Pantalla
+    Button botonSubir;//subir nivel casilla
+    boolean doble=false;
 	
     Tarjetas_Sorpresa ts=new Tarjetas_Sorpresa();
     
+    public void finPartida(){
+    	if(Partida.Instancia().JugadorActual().getTarjetas().size()==22){
+    		AlertDialog.Builder ad = new AlertDialog.Builder(this);
+			ad.setTitle("HAS GANADO");
+			ad.setCancelable(false);
+			ad.setMessage("Enhorabuena el jugador "+Partida.Instancia().JugadorActual().get_Nombre()+" ha ganado el juego");
+			ad.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {  
+	            public void onClick(DialogInterface dialogo1, int id) {  
+	               Intent intent = new Intent(Tablero.this, MenuPrincipal.class);
+	     	       finish();
+	     	       startActivity(intent);
+	            }  
+	        });
+			ad.show();
+    	}
+    }
+    
+    public void eliminarjugador(){
+    	Jugador j=Partida.Instancia().JugadorActual();
+    	if(0>j.get_Creditos()){
+    		///Jugador elimando por falta de creditos.
+    		//Partida.Instancia().
+    		Partida.Instancia().tarjetas.addAll(j.getTarjetas());
+    		ArrayList<Tarjetas_Tablero> t=new ArrayList<Tarjetas_Tablero>();
+    		j.setTarjetas(t);
+    		j.setActivo(false);
+    		Partida.Instancia().setJugadorActual(j);
+    		
+    		if(!todosEliminados()){
+    			AlertDialog ad = new AlertDialog.Builder(this).create();
+    			ad.setTitle("JUGADOR ELIMINADO");
+    			ad.setMessage("Este jugador ha sido eliminado y no participara más en la partida");
+    			ad.show();
+    		}else{
+    			AlertDialog.Builder ad = new AlertDialog.Builder(this);
+    			ad.setTitle("PARTIDA TERMINADA");
+    			ad.setCancelable(false);
+    			ad.setMessage("La partida ha teminado porque todos los jugadores están eliminados");
+    			ad.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {  
+    	            public void onClick(DialogInterface dialogo1, int id) {  
+    	               Intent intent = new Intent(Tablero.this, MenuPrincipal.class);
+    	     	       finish();
+    	     	       startActivity(intent);
+    	            }  
+    	        });
+    			ad.show();
+    		}
+    		
+	    	int[] n=Tablero.posicionTablero(j.getPosicionTablero());
+			((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(j.getPosicion()[0])).getChildAt(j.getPosicion()[1])).setBackgroundColor(Color.TRANSPARENT);
+    	}
+    }
 	
+	private boolean todosEliminados() {
+		HashMap<Integer, Jugador> jugadores = Partida.Instancia().jugadores;
+		int j=0;
+		for(int i=1;i<=jugadores.size();i++){
+			if(!jugadores.get(i).isActivo()){
+				j++;
+			}
+		}
+		
+		if(j==jugadores.size()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public void preguntar(){
         final Dialog ventana = new Dialog(this);
 		if(sol){
@@ -99,25 +168,80 @@ public class Tablero extends Activity {
 			int iden=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
 			
 			if(estaTajeta(iden)){
-				botonComprar.setEnabled(true);	
+				int iden1=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				//Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaCategoria(cat);
+				Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaIden(iden1);
+				boton2.setEnabled(true);
+				if(Partida.Instancia().JugadorActual().get_Creditos()>tar.get_Creditos())
+					botonComprar.setEnabled(true);	
+				
 			}else{
 				//LA TARJETA YA ESTA COMPRADA
+				if(mePertenece(iden)){
+					//LA TARJETA LE PERTENECE AL JUGADOR ACTUAL
+					boton2.setEnabled(true);
+					
+					int iden1=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+					Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaIdenJug(iden1);
+					//tar.get_Creditos();
+					if(tar.getNivel()<4&&(tar.getCosteEstrella()<=Partida.Instancia().JugadorActual().get_Creditos())){
+						botonSubir.setEnabled(true);
+					}
+				}else{
+					//LATARJETA LE PERTENECE A OTRO JUGADOR
+					botonPagar.setEnabled(true);
+					boton2.setEnabled(false);
+				}
 			}
-			boton2.setEnabled(true);
+			//boton2.setEnabled(true);
 		}else{
 			ventana.setTitle("fallo");
 			boton2.setEnabled(true);
+			/////////
+
+			//buscarTarjeta(Partida.Instancia().JugadorActual().getPosicion());
+			int iden=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+			
+			if(estaTajeta(iden)){
+				boton2.setEnabled(true);
+				
+			}else{
+				//LA TARJETA YA ESTA COMPRADA
+				if(mePertenece(iden)){
+					//LA TARJETA LE PERTENECE AL JUGADOR ACTUAL
+					boton2.setEnabled(true);
+				}else{
+					//LA TARJETA LE PERTENECE A OTRO JUGADOR
+					botonPagar.setEnabled(true);
+					boton2.setEnabled(false);
+					doble=true;
+				}
+			}
+			/////////
 		}
 		ventana.show();		
 	}
 
     public void aceptar(){
-		int d1=Dado.lanzarDado();
-		int d2=Dado.lanzarDado();
-    	Toast t=Toast.makeText(this, d1+" ~~ "+d2, Toast.LENGTH_LONG);
-    	resultado=d1+d2;
-    	dobles=(d1==d2);
-    	t.show();    	
+    	if(Partida.Instancia().JugadorActual().getTurnos()==0){
+    		int d1=Dado.lanzarDado();
+			int d2=Dado.lanzarDado();
+    		Toast t=Toast.makeText(this, d1+" ~~ "+d2, Toast.LENGTH_LONG);
+    		resultado=d1+d2;
+    		dobles=(d1==d2);
+    		t.show();
+    		//cambiendo resultado vas a la casillas que quieras
+    		/*
+    		resultado=13;
+    		dobles=false;
+    		*/
+    	}else{
+    		Jugador j=Partida.Instancia().JugadorActual();
+    		j.setTurnos(j.getTurnos()-1);
+    		Partida.Instancia().setJugadorActual(j);
+    		resultado=0;
+    		dobles=false;
+    	}
     	moverFicha();
     }
 	
@@ -127,6 +251,7 @@ public class Tablero extends Activity {
     	int[] n=Tablero.posicionTablero(JActual.getPosicionTablero());
     	
     	if(tableroCeldas[n[1]][n[0]].getChildAt(0)!=null){
+    		((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[0][0].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundColor(Color.TRANSPARENT);
          	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundColor(Color.TRANSPARENT);
         }
 
@@ -135,7 +260,7 @@ public class Tablero extends Activity {
     	pos=pos+1;
     	if(pos>41){
 
-			/*
+			
 			Jugador j=Partida.Instancia().JugadorActual();
 			j.set_Creditos(j.get_Creditos()+2000);
 			Partida.Instancia().setJugadorActual(j);
@@ -144,7 +269,7 @@ public class Tablero extends Activity {
 			ad.setTitle("!!SÁLIDA¡¡");
 			ad.setMessage("enhorabuena acabas de pasar por la salida cobras 2000");
 			ad.show();
-			*/
+			
     		pos=pos-40;
     	}
         
@@ -202,8 +327,12 @@ public class Tablero extends Activity {
         final Preguntas p=new Preguntas();
 		//final HashMap<Integer, String[]> pr = p.pregunta();
 		String cat=buscarCategoria(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+
+
+        boolean pag=true;
 		
 		if(!cat.equals("")){
+			pag=false;
         final String[] preg = p.getPregunta(cat);
         //final String[] preg={"","","","","","","",""};
         final String[] items = {preg[1],preg[2],preg[3],preg[4]};
@@ -248,42 +377,164 @@ public class Tablero extends Activity {
 				ad.setTitle("!!SUERTE¡¡");
 				ad.setMessage(texto);
 				ad.show();
+				eliminarjugador();
+			}else if(cas.equals("gMatricula")){
+							
+				Jugador j=Partida.Instancia().JugadorActual();
+				j.set_Creditos(j.get_Creditos()+(-2000));
+				Partida.Instancia().setJugadorActual(j);
 				
+				AlertDialog ad = new AlertDialog.Builder(this).create();
+				ad.setTitle("GASTOS DE MATRÍCULA");
+				ad.setMessage("Tienes que pagar los gastos de mátricula -2000");
+				ad.show();
+
+				eliminarjugador();
+			}else if(cas.equals("gDeportivos")){
+								
+				Jugador j=Partida.Instancia().JugadorActual();
+				j.set_Creditos(j.get_Creditos()+(-1000));
+				Partida.Instancia().setJugadorActual(j);
+				
+				AlertDialog ad = new AlertDialog.Builder(this).create();
+				ad.setTitle("GASTOS DEPORTIVOS");
+				ad.setMessage("Tienes que pagar los gastos deportivos -1000");
+				ad.show();
+
+				eliminarjugador();
+			}else if(cas.equals("estudiar")){
+				
+				//Jugador j=Partida.Instancia().JugadorActual();
+				//j.setTurnos(3);
+				
+				/////////////7
+
+				// TODO Auto-generated method stub
+		    	Jugador JActual=Partida.Instancia().JugadorActual();
+		    	JActual.setTurnos(3);
+		    	int[] n=Tablero.posicionTablero(JActual.getPosicionTablero());
+		    	
+		    	if(tableroCeldas[n[1]][n[0]].getChildAt(0)!=null){
+		         	((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundColor(Color.TRANSPARENT);
+		        }
+
+
+		    	int pos=11;
+		    			        
+		    	n=Tablero.posicionTablero(pos);
+		    	JActual.setPosicionTablero(pos);
+		    	
+		        ((FrameLayout)((LinearLayout) ((TableLayout) tableroCeldas[n[1]][n[0]].getChildAt(0)).getChildAt(JActual.getPosicion()[0])).getChildAt(JActual.getPosicion()[1])).setBackgroundResource(JActual.getFicha());
+		    	HashMap<Integer, Jugador> jugadores = Partida.Instancia().getJugadores();
+		    	jugadores.remove(Partida.Instancia().Num_JugadorActual());
+		    	jugadores.put(Partida.Instancia().Num_JugadorActual(), JActual);
+		    	Partida.Instancia().setJugadores(jugadores);
+			
+				/////////////7
+				
+				//j.setPosicionTablero(11);
+				//Partida.Instancia().setJugadorActual(j);
+
+				AlertDialog ad = new AlertDialog.Builder(this).create();
+				ad.setTitle("Vas a la biblioteca a estudiar");
+				ad.setMessage("Tres turnos sin tirar");
+				ad.show();
+			}else if(cas.equals("edificio")){
+		    	Jugador JActual=Partida.Instancia().JugadorActual();
+		    	
+				String nombre=buscarEdificio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				ArrayList<Tarjetas_Tablero> edificios = Partida.Instancia().tarjetasEdificio;
+				boolean b=false;
+				Tarjetas_Edificios edif=null;
+				for(Tarjetas_Tablero edifi : edificios){
+					if(((Tarjetas_Edificios)edifi).get_Categoria().equals(nombre)){
+						b=true;
+						edif=((Tarjetas_Edificios)edifi);
+					}
+				}
+				if(b){
+					if(edif.get_Creditos()<JActual.get_Creditos())
+						botonComprar.setEnabled(true);
+				}else{
+					///Ya esta comprada
+					if(mePerteneceEdificio(nombre)){
+						//LA TENGO YO
+					}else{
+						botonPagar.setEnabled(true);
+						pag=false;
+					}
+				}
+			}else if(cas.equals("servicio")){
+				Jugador JActual=Partida.Instancia().JugadorActual();
+				String nombre=buscarServicio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				ArrayList<Tarjetas_Tablero> servicios = Partida.Instancia().tarjetasServicio;
+				boolean b=false;
+				Tarjetas_Servicios serv=null;
+				for(Tarjetas_Tablero servi : servicios){
+					if(((Tarjetas_Servicios)servi).get_Categoria().equals(nombre)){
+						{
+							b=true;	
+							serv=((Tarjetas_Servicios)servi);
+						}
+					}
+				}
+				if(b){
+					if(serv.get_Creditos()<JActual.get_Creditos())
+						botonComprar.setEnabled(true);
+				}else{
+					///Ya esta comprada
+					if(mePerteneceServicio(nombre)){
+						//LA TENGO YO
+					}else{
+						botonPagar.setEnabled(true);
+						pag=false;
+					}
+				}
 			}
 		}
-		
-		this.boton2.setEnabled(true);
+		if(pag)
+			this.boton2.setEnabled(true);
     }
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
-
+        
         final Button botonComprar=new Button(this);
     	final Button boton=new Button(this);//tirar los dados
         final Button botonPagar=new Button(this);
         Button boton2=new Button(this);//pasar turno
         Button boton1=new Button(this);//cambiar Pantalla
+        Button botonSubir=new Button(this);//SubirNivel
     	
+        
         this.botonComprar=botonComprar;
     	this.boton=boton;
     	this.boton2=boton2;
     	this.boton1=boton1;
     	this.botonPagar=botonPagar;
+    	this.botonSubir=botonSubir;
     	
     	botonComprar.setEnabled(false);
     	boton2.setEnabled(false);
     	botonPagar.setEnabled(false);
-    	
+    	botonSubir.setEnabled(false);
     	
         final AlertDialog.Builder dialog= new AlertDialog.Builder(this);
-        dialog.setTitle("TIRAR LOS DADOS");
-        dialog.setIcon(R.drawable.dados);
-        dialog.setMessage("¡SUERTE!");
+        
+        /*if(Partida.Instancia().JugadorActual().getTurnos()==0){
+        	dialog.setTitle("TIRAR LOS DADOS");
+        	dialog.setIcon(R.drawable.dados);
+        	dialog.setMessage("¡SUERTE!");
+        }else{
+        	dialog.setTitle("ESTAS ESTUDIANDO");
+        	dialog.setMessage("Te quedan "+Partida.Instancia().JugadorActual().getTurnos()+" turnos");
+        }*/
+        
         dialog.setCancelable(false);
         
-        
+        /*
         dialog.setPositiveButton("Tirar", new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int which) {
@@ -292,7 +543,7 @@ public class Tablero extends Activity {
 				aceptar();
 			}
 		});
-        
+        */
         //dialog.show();
 
 
@@ -455,7 +706,35 @@ public class Tablero extends Activity {
 	              b.setEnabled(false);
 	        	  //Intent intent = new Intent(Tablero.this, TableroSecundario.class);
 	              //startActivity(intent);
-
+	              
+	              if(Partida.Instancia().JugadorActual().getTurnos()==0){
+	              	dialog.setTitle("TIRAR LOS DADOS");
+	              	dialog.setIcon(R.drawable.dados);
+	              	dialog.setMessage("¡SUERTE!");
+	              	dialog.setPositiveButton("Tirar", new DialogInterface.OnClickListener() {
+	        			
+	        			public void onClick(DialogInterface dialog, int which) {
+	        				// TODO Auto-generated method stub
+	        				
+	        				aceptar();
+	        			}
+	        		});
+	              }else{
+	              	dialog.setTitle("ESTAS ESTUDIANDO");
+	              	dialog.setIcon(R.drawable.libro);
+	              	dialog.setMessage("Te quedan "+Partida.Instancia().JugadorActual().getTurnos()+" turnos");
+	              	dialog.setPositiveButton("Pasar turno", new DialogInterface.OnClickListener() {
+	        			
+	        			public void onClick(DialogInterface dialog, int which) {
+	        				// TODO Auto-generated method stub
+	        				
+	        				aceptar();
+	        			}
+	        		});
+	              }
+	              
+	              
+	              
 	              dialog.show();
 	            //setContentView(R.layout.activity_dado);
 	             
@@ -472,12 +751,56 @@ public class Tablero extends Activity {
 			public void onClick(View v) {
 	              //Button b=(Button) v;
 	              //b.setText("pulsado");
+    			/////
 	        	  Intent intent = new Intent(Tablero.this, TableroSecundario.class);
 	        	  startActivity(intent);   
 			}
 		});
         
+        botonSubir.setText("Poner estrella");
+        botonSubir.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+	              Button b=(Button) v;
+	              b.setEnabled(false);
+	        	  
+	              int iden=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+	  			  
+	              Jugador jugadorActual=Partida.Instancia().JugadorActual();
+	              ArrayList<Tarjetas_Tablero> tarjetas = jugadorActual.getTarjetas();
+	              int i=0;
+	              while(tarjetas.get(i).get_Id()!=iden){
+	            	  i++;
+	              }
+	              Tarjetas_Tablero tar=tarjetas.get(i);
+	              ((Tarjetas_Titulaciones)tar).subirNivel();
+	              jugadorActual.set_Creditos(jugadorActual.get_Creditos()-((Tarjetas_Titulaciones)tar).getCosteEstrella());
+	              tarjetas.set(i, tar);
+	              jugadorActual.setTarjetas(tarjetas);
+	              Partida.Instancia().setJugadorActual(jugadorActual);
+	              
+	              int[] n = posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero());
 
+	              int nivel=((Tarjetas_Titulaciones)tar).getNivel();
+	              int[] imagenes=((Tarjetas_Titulaciones)tar).getImagenNiveles();
+	              tableroCeldas[n[1]][n[0]].setBackgroundResource(imagenes[nivel-1]);              
+	              
+	              AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+					ad.setTitle("!!PONER ESTRELLA¡¡");
+					ad.setMessage("enhorabuena de has puesto una estrella -"+((Tarjetas_Titulaciones)tar).getCosteEstrella());
+					ad.show();
+	              /*
+	              for(Tarjetas_Tablero tar:jugadorActual.getTarjetas()){
+	            	  if(tar.get_Id()==iden){
+	            		  ((Tarjetas_Titulaciones)tar).subirNivel();
+	            		  jugadorActual.
+	            	  }
+	              }*/
+	  			  
+			}
+		});
+        
         /*final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
         final Preguntas p=new Preguntas();
@@ -514,16 +837,19 @@ public class Tablero extends Activity {
         		
 			@Override
 			public void onClick(View v) {
-
-				Button b=(Button) v;
-	            b.setEnabled(false);
-	              
+				Button b=(Button)v;
+				b.setEnabled(false);
+				String cat=buscarCategoria(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				String cas=Casilla(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				
+					if(!cat.equals("")){
 				int iden=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
 				//Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaCategoria(cat);
 				Tarjetas_Titulaciones tar=(Tarjetas_Titulaciones) tarjetaIden(iden);
 				
 				Jugador j=Partida.Instancia().JugadorActual();
 				j.ComprarTarjetas(tar);
+				j.set_Creditos(j.get_Creditos()-tar.get_Creditos());
 				Partida.Instancia().setJugadorActual(j);
 				//j.getTarjetas().get(0);
 				//Partida.Instancia().JugadorActual().getTarjetas().get(0);
@@ -534,6 +860,94 @@ public class Tablero extends Activity {
 				Partida.Instancia().tarjetas=tt;
 
 
+				AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+				ad.setTitle("!!COMPRADA¡¡");
+				ad.setMessage("enhorabuena de comprar una tarjeta de titulación -"+tar.get_Creditos());
+				ad.show();
+				finPartida();
+					}else if(cas.equals("edificio")){
+						/*
+						Jugador JActual=Partida.Instancia().JugadorActual();
+				String nombre=buscarEdificio(JActual.getPosicion());
+				ArrayList<Tarjetas_Tablero> edificios = Partida.Instancia().tarjetasEdificio;
+				boolean b=false;
+				for(Tarjetas_Tablero edifi : edificios){
+					if(((Tarjetas_Edificios)edifi).get_Categoria().equals(nombre)){
+						b=true;
+					}
+				}
+				if(b){
+					botonComprar.setEnabled(true);
+				}else{
+					///Ya esta comprada
+				}
+						 */
+						Jugador JActual=Partida.Instancia().JugadorActual();
+						String nombre=buscarEdificio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+						ArrayList<Tarjetas_Tablero> edificios = Partida.Instancia().tarjetasEdificio;
+						Tarjetas_Edificios edificio = null;
+						int i=0,j=0;
+						for(Tarjetas_Tablero edifi: edificios){
+							
+							if(((Tarjetas_Edificios)edifi).get_Categoria().equals(nombre)){
+								edificio=(Tarjetas_Edificios)edifi;
+								j=i;
+							}
+							i++;
+						}
+						
+						
+						ArrayList<Tarjetas_Edificios> JEdificio = JActual.getTarjetasEdificio();
+						JEdificio.add(edificio);
+						JActual.setTarjetasEdificio(JEdificio);
+						JActual.set_Creditos(JActual.get_Creditos()-edificio.get_Creditos());
+						Partida.Instancia().setJugadorActual(JActual);
+						
+						ArrayList<Tarjetas_Tablero> tt = Partida.Instancia().tarjetasEdificio;
+						tt.remove(j);
+						//tt.remove(3);
+						Partida.Instancia().tarjetasEdificio=tt;
+						
+						
+						AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+						ad.setTitle("!!COMPRADA¡¡");
+						ad.setMessage("enhorabuena de comprar una tarjeta de edificio -"+edificio.get_Creditos());
+						ad.show();
+					}else if(cas.equals("servicio")){
+
+						Jugador JActual=Partida.Instancia().JugadorActual();
+						String nombre=buscarServicio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+						ArrayList<Tarjetas_Tablero> servicios = Partida.Instancia().tarjetasServicio;
+						Tarjetas_Servicios servicio = null;
+						int i=0,j=0;
+						for(Tarjetas_Tablero servi: servicios){
+							
+							if(((Tarjetas_Servicios)servi).get_Categoria().equals(nombre)){
+								servicio=(Tarjetas_Servicios)servi;
+								j=i;
+							}
+							i++;
+						}
+						
+						ArrayList<Tarjetas_Servicios> JServicio= JActual.getTarjetasServicio();
+						JServicio.add(servicio);
+						JActual.setTarjetasServicio(JServicio);
+						JActual.set_Creditos(JActual.get_Creditos()-servicio.get_Creditos());
+						Partida.Instancia().setJugadorActual(JActual);
+
+						ArrayList<Tarjetas_Tablero> tt = Partida.Instancia().tarjetasServicio;
+						tt.remove(j);
+						//tt.remove(3);
+						//Partida.Instancia().tarjetasServicio.clear();
+						Partida.Instancia().tarjetasServicio=tt;
+						
+						
+						AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+						ad.setTitle("!!COMPRADA¡¡");
+						ad.setMessage("enhorabuena de comprar una tarjeta de servicio -"+servicio.get_Creditos());
+						ad.show();
+
+					}
 			}
 		});
         
@@ -546,8 +960,221 @@ public class Tablero extends Activity {
 			public void onClick(View v) {
 				Button b=(Button) v;
 	            b.setEnabled(false);
+	            String cat=buscarCategoria(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+	    		if(!cat.equals("")){
+	    			Jugador jugadorActual=Partida.Instancia().JugadorActual(), jugadorTarjeta = null;
+	    			Tarjetas_Titulaciones tarjetaTitulacion = null;
+	    			int nPosJug;
+	    			int iden1=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+	    				
+	    			HashMap<Integer, Jugador> jugadoresPartida = Partida.Instancia().jugadores;
 	            
+	    			for(nPosJug=1;nPosJug<jugadoresPartida.size()+1;nPosJug++){
+	    				for(int j=0;j<jugadoresPartida.get(nPosJug).getTarjetas().size();j++){
+	    					if(jugadoresPartida.get(nPosJug).getTarjetas().get(j).get_Id()==iden1){
+	    						jugadorTarjeta=jugadoresPartida.get(nPosJug);
+	    						tarjetaTitulacion=(Tarjetas_Titulaciones) jugadoresPartida.get(nPosJug).getTarjetas().get(j);
+	    					}
+	    				}
+	    			}
+	    			///////
+	    			AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+					
+	    			switch (tarjetaTitulacion.getNivel()) {
+					case 0:
+						if(doble){
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat0()*2));
+		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat0()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat0()*2));
+		    			}else{
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat0());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat0());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat0());
+			    		}
+						break;
+					case 1:
+						if(doble){
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat1()*2));
+		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat1()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat1()*2));
+		    			}else{
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat1());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat1());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat1());
+			    		}
+						break;
+					case 2:
+						if(doble){
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat2()*2));
+		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat2()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat2()*2));
+		    			}else{
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat2());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat2());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat2());
+			    		}
+						break;
+					case 3:
+						if(doble){
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat3()*2));
+		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat3()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat3()*2));
+		    			}else{
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat3());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat3());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat3());
+			    		}
+						break;
+					case 4:
+						if(doble){
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat4()*2));
+		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat4()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat4()*2));
+		    			}else{
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat4());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat4());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat4());
+			    		}
+						break;
 
+					default:
+						if(doble){
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Licenciado()*2));
+		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Licenciado()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Licenciado()*2));
+		    			}else{
+		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Licenciado());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Licenciado());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Licenciado());
+			    		}
+						break;
+					}
+	    			
+	    			/////////
+	    			//Partida.Instancia().jugadores.put(nPosJug, jugadorTarjeta);
+	            	Partida.Instancia().setJugadorActual(jugadorActual);
+	            
+	            	ad.setTitle("!!PAGADO¡¡");
+					ad.show();
+	            	
+	            	Tablero.this.boton2.setEnabled(true);
+	            	doble=false;
+	    		}else{
+	    			String cas=Casilla(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+	    			if(cas.equals("edificio")){
+	    				
+	    				Jugador jugadorActual=Partida.Instancia().JugadorActual(), jugadorTarjeta = null;
+		    			Tarjetas_Edificios tarjetaEdificio = null;
+		    			int nPosJug;
+		    			String nombre=buscarEdificio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+		    			//int iden1=buscarTarjeta(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+		    				/*
+		    	String nombre=buscarEdificio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+				ArrayList<Tarjetas_Tablero> edificios = Partida.Instancia().tarjetasEdificio;
+				boolean b=false;
+				for(Tarjetas_Tablero edifi : edificios){
+					if(((Tarjetas_Edificios)edifi).get_Categoria().equals(nombre)){
+						b=true;
+					}
+				}
+		    				 */
+		    			HashMap<Integer, Jugador> jugadoresPartida = Partida.Instancia().jugadores;
+		            
+		    			for(nPosJug=1;nPosJug<jugadoresPartida.size()+1;nPosJug++){
+		    				for(int j=0;j<jugadoresPartida.get(nPosJug).getTarjetasEdificio().size();j++){
+		    					if(jugadoresPartida.get(nPosJug).getTarjetasEdificio().get(j).get_Categoria()==nombre){
+		    						jugadorTarjeta=jugadoresPartida.get(nPosJug);
+		    						tarjetaEdificio=jugadoresPartida.get(nPosJug).getTarjetasEdificio().get(j);
+		    					}
+		    				}
+		    			}
+		    			int nTar=jugadorTarjeta.getTarjetasEdificio().size();
+		    			AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+						
+		    			switch (nTar) {
+						case 1:
+							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste1());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste1());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste1());
+							
+							break;
+						case 2:
+							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste2());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste2());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste2());
+							
+							break;
+						case 3:
+							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste3());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste3());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste3());
+							
+							break;
+
+						default:
+							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste4());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste4());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste4());
+							
+							break;
+						}
+		    			
+		    			//Partida.Instancia().jugadores.put(nPosJug, jugadorTarjeta);
+		            	Partida.Instancia().setJugadorActual(jugadorActual);
+		            
+		            	Tablero.this.boton2.setEnabled(true);
+	    			
+		            	ad.setTitle("!!PAGADO¡¡");
+						ad.show();
+		            	
+	    			}else if(cas.equals("servicio")){
+	    				
+	    				Jugador jugadorActual=Partida.Instancia().JugadorActual(), jugadorTarjeta = null;
+		    			Tarjetas_Servicios tarjetaServicio = null;
+		    			int nPosJug;
+		    			String nombre=buscarServicio(posicionTablero(Partida.Instancia().JugadorActual().getPosicionTablero()));
+		    			
+		    			HashMap<Integer, Jugador> jugadoresPartida = Partida.Instancia().jugadores;
+		            
+		    			for(nPosJug=1;nPosJug<jugadoresPartida.size()+1;nPosJug++){
+		    				for(int j=0;j<jugadoresPartida.get(nPosJug).getTarjetasServicio().size();j++){
+		    					if(jugadoresPartida.get(nPosJug).getTarjetasServicio().get(j).get_Categoria()==nombre){
+		    						jugadorTarjeta=jugadoresPartida.get(nPosJug);
+		    						tarjetaServicio=jugadoresPartida.get(nPosJug).getTarjetasServicio().get(j);
+		    					}
+		    				}
+		    			}
+		            
+		    			AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
+						
+		    			int nTar=jugadorTarjeta.getTarjetasServicio().size();
+		    			switch (nTar) {
+						case 1:
+							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaServicio.get_Coste1());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaServicio.get_Coste1());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaServicio.get_Coste1());
+							
+							break;
+							
+						default:
+							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaServicio.get_Coste2());
+			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaServicio.get_Coste2());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaServicio.get_Coste2());
+							
+			    			break;
+						}
+
+		    			//Partida.Instancia().jugadores.put(nPosJug, jugadorTarjeta);
+		            	Partida.Instancia().setJugadorActual(jugadorActual);
+		            
+		    			
+		            	Tablero.this.boton2.setEnabled(true);
+	    				
+		            	ad.setTitle("!!PAGADO¡¡");
+						ad.show();
+	    			}
+	    		}
+    			eliminarjugador();
 			}
 		});
         
@@ -581,6 +1208,7 @@ public class Tablero extends Activity {
         ll1.addView(boton2);
         ll1.addView(botonComprar);
         ll1.addView(botonPagar);
+        ll1.addView(botonSubir);
         tr.addView(ll1);
         
         LinearLayout ll = new LinearLayout(this);
@@ -609,6 +1237,15 @@ public class Tablero extends Activity {
 		return null;
 	}
     
+    protected Tarjetas_Tablero tarjetaIdenJug(int iden) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().JugadorActual().getTarjetas()){
+    		if(tarjeta.get_Id()==iden){
+    			return tarjeta;
+    		}
+    	}
+		return null;
+	}
+    
     protected int tarjetaPosicion(int iden) {
     	int i=0;
     	for(Tarjetas_Tablero tarjeta:Partida.Instancia().tarjetas){
@@ -630,6 +1267,32 @@ public class Tablero extends Activity {
 		return false;
 	}
     
+    protected boolean mePertenece(int iden) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().JugadorActual().getTarjetas()){
+    		if(tarjeta.get_Id()==iden){
+    			return true;
+    		}
+    	}
+		return false;
+	}
+    
+    protected boolean mePerteneceEdificio(String cat) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().JugadorActual().getTarjetasEdificio()){
+    		if(tarjeta.get_Categoria()==cat){
+    			return true;
+    		}
+    	}
+		return false;
+	}
+    
+    protected boolean mePerteneceServicio(String cat) {
+    	for(Tarjetas_Tablero tarjeta:Partida.Instancia().JugadorActual().getTarjetasServicio()){
+    		if(tarjeta.get_Categoria()==cat){
+    			return true;
+    		}
+    	}
+		return false;
+	}
     
 	public void asignarImagenes(){
     	int[] posicion;
@@ -756,10 +1419,51 @@ public static String Casilla(int[] posicion){
 		return "sorpresa";
 	}else if(posicion[0]==3&&posicion[1]==4){
 		return "sorpresa";
+	}else if(posicion[0]==0&&posicion[1]==4){
+		return "gMatricula";
+	}else if(posicion[0]==2&&posicion[1]==0){
+		return "gDeportivos";
+	}else if(posicion[0]==3&&posicion[1]==7){
+		return "estudiar";
+	}else if(posicion[0]==0&&posicion[1]==5){
+		return "edificio";
+	}else if(posicion[0]==1&&posicion[1]==4){
+		return "edificio";
+	}else if(posicion[0]==2&&posicion[1]==7){
+		return "edificio";
+	}else if(posicion[0]==3&&posicion[1]==2){
+		return "edificio";
+	}else if(posicion[0]==1&&posicion[1]==7){
+		return "servicio";
+	}else if(posicion[0]==3&&posicion[1]==9){
+		return "servicio";
 	}else{
 		return "";
 	}
 }
+    public static String buscarEdificio(int[] posicion){
+    	if(posicion[0]==0&&posicion[1]==5){
+    		return "vives";
+    	}else if(posicion[0]==1&&posicion[1]==4){
+    		return "quintiliano";
+    	}else if(posicion[0]==2&&posicion[1]==7){
+    		return "politecnico";
+    	}else if(posicion[0]==3&&posicion[1]==2){
+    		return "cct";
+    	}else{
+    		return "";
+    	}
+    }
+    
+    public static String buscarServicio(int[] posicion){
+    	if(posicion[0]==1&&posicion[1]==7){
+    		return "fotocopiadora";
+    	}else if(posicion[0]==3&&posicion[1]==9){
+    		return "expendedora";
+    	}else{
+    		return "";
+    	}
+    }
     
     public static String buscarCategoria(int[] posicion){
 		
@@ -806,7 +1510,7 @@ public static String Casilla(int[] posicion){
     	}else if(posicion[0]==1&&posicion[1]==0){
     		return "experiencia";
     	}else if(posicion[0]==3&&posicion[1]==0){
-    		return "experiancia";
+    		return "experiencia";
     	}else{
     		return "";
     	}
