@@ -65,15 +65,6 @@
 	                android:text="@string/bt_NuevoJuego" />
 
 	            <Button
-	                android:id="@+id/bt_Configuracion"
-	                style="?android:attr/buttonStyleSmall"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:layout_gravity="center"
-	                android:layout_weight="25"
-	                android:text="@string/bt_Configuracion" />
-
-	            <Button
 	                android:id="@+id/bt_Ayuda"
 	                style="?android:attr/buttonStyleSmall"
 	                android:layout_width="match_parent"

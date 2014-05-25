@@ -50,7 +50,7 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> Este juego consta de 40 casillas en las que se dispone de titulaciones, secretaría (banca), tarjetas sorpresa... "
+            android:text="=> Este juego consta de 40 casillas en las que se dispone de titulaciones de titulaciones, secretaria(banca), tarjetas sorpresa, "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
         	

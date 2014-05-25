@@ -20,18 +20,17 @@ public class MenuPrincipal extends Activity {
         Button botonAyuda = (Button) findViewById(R.id.bt_Ayuda);
         botonAyuda.setOnClickListener(new OnClickListener() {
 
-        	
            @Override
            public void onClick(View v) {
         	   Intent intent = new Intent(MenuPrincipal.this, PantallaAyuda.class);       	  
               startActivity(intent);
-              startActivityForResult(intent, 11);
+              //startActivityForResult(intent, 11);
 
            }
         });
         
-        Button botonConfiguracion = (Button) findViewById(R.id.bt_Configuracion);
-        botonConfiguracion.setOnClickListener(new OnClickListener() {
+        //Button botonConfiguracion = (Button) findViewById(R.id.bt_Configuracion);
+        /*botonConfiguracion.setOnClickListener(new OnClickListener() {
 
            @Override
            public void onClick(View v) {
@@ -44,7 +43,7 @@ public class MenuPrincipal extends Activity {
 
            }
         });
-        
+        */
         Button boton = (Button) findViewById(R.id.bt_nuevoJuego);
         boton.setOnClickListener(new OnClickListener() {
 

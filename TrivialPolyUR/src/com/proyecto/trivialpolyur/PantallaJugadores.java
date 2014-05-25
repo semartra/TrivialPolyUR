@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +22,37 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 public class PantallaJugadores extends Activity {
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	   
+	  if (keyCode == KeyEvent.KEYCODE_BACK) {
+	   
+	    new AlertDialog.Builder(this)
+	      .setIcon(android.R.drawable.ic_dialog_alert)
+	      //.setIcon(R.drawable.exitgame)
+	      .setTitle("Abandonar Partida")
+	      .setMessage("¿Estas seguro de Abandonar la partida?")
+	      .setNegativeButton(android.R.string.cancel, null)//sin listener
+	      .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {//un listener que al pulsar, cierre la aplicacion
+	        @Override
+	        public void onClick(DialogInterface dialog, int which){
+	          //Salir
+	          //finish();
+	       Intent intent = new Intent(PantallaJugadores.this, MenuPrincipal.class);
+	       finish();
+	       startActivity(intent);
+
+	        }
+	      })
+	      .show();
+
+	    // Si el listener devuelve true, significa que el evento esta procesado, y nadie debe hacer nada mas
+	    return true;
+	  }
+	//para las demas cosas, se reenvia el evento al listener habitual
+	  return super.onKeyDown(keyCode, event);
+	} 
+	
 	private int getColor(String color){
 		if(color.equals("Rojo")){
 			return Color.RED;

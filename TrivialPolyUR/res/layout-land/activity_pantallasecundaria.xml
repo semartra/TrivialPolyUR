@@ -53,7 +53,7 @@
 
                     </LinearLayout>
                     
-                    <LinearLayout
+                    <ScrollView
                         android1:layout_width="match_parent"
                         android1:layout_height="match_parent" >
 
@@ -264,7 +264,7 @@
 
                         </LinearLayout>
 
-                    </LinearLayout>
+                    </ScrollView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -293,7 +293,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
+                    <ScrollView
                         android1:layout_width="match_parent"
                         android1:layout_height="match_parent" >
 
@@ -495,7 +495,7 @@
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </ScrollView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -523,8 +523,8 @@
                                 android1:layout_height="match_parent" />
                         </LinearLayout>
                     </LinearLayout>
-
-                    <LinearLayout
+					////////////////////7
+                    <ScrollView
                         android1:layout_width="match_parent"
                         android1:layout_height="match_parent" >
 
@@ -726,7 +726,7 @@
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </ScrollView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -755,7 +755,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
+                    <ScrollView
                         android1:layout_width="match_parent"
                         android1:layout_height="match_parent" >
 
@@ -957,7 +957,7 @@
                                     android1:textAppearance="?android:attr/textAppearanceLarge" />
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
+                    </ScrollView>
                 </LinearLayout>
                 
                 <LinearLayout android1:id="@+id/tab5" android1:layout_width="match_parent" android1:layout_height="match_parent">
@@ -975,8 +975,8 @@
                         </LinearLayout>
 
                     </LinearLayout>
-
-                    <LinearLayout
+					///////////////////////////////
+                    <ScrollView
                         android1:layout_width="match_parent"
                         android1:layout_height="match_parent" >
 
@@ -1168,7 +1168,7 @@
 
                         </LinearLayout>
 
-                    </LinearLayout>
+                    </ScrollView>
 
                 </LinearLayout>
 

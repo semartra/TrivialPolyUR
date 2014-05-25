@@ -23,7 +23,9 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -31,6 +33,8 @@ import android.widget.Toast;
 public class Tablero extends Activity {
 
 	//Button pruebas;
+	int p=1; //caer dos veces seguidas pruebas
+	
 	
     private String res="";
     private boolean sol=false;
@@ -231,10 +235,30 @@ public class Tablero extends Activity {
     		dobles=(d1==d2);
     		t.show();
     		//cambiendo resultado vas a la casillas que quieras
+    		
+    		resultado=2;
+    		//dobles=false;
+    		
+    		
+    		//3 veces
     		/*
-    		resultado=13;
-    		dobles=false;
+    		if(p==1)
+    		{	 
+    			resultado=2;
+    		    p++;
+    	    }
+    	    else if(p==2)
+    	    {
+    	    	resultado=34;
+    		    p++;
+    	    }
+    		else
+    		{
+    			resultado=6;
+    			p=2;
+    		}
     		*/
+    		
     	}else{
     		Jugador j=Partida.Instancia().JugadorActual();
     		j.setTurnos(j.getTurnos()-1);
@@ -258,7 +282,8 @@ public class Tablero extends Activity {
 
     	int pos=JActual.getPosicionTablero();
     	pos=pos+1;
-    	if(pos>41){
+    	
+    	if(pos==41){
 
 			
 			Jugador j=Partida.Instancia().JugadorActual();
@@ -267,8 +292,12 @@ public class Tablero extends Activity {
 				
 			AlertDialog ad = new AlertDialog.Builder(this).create();
 			ad.setTitle("!!SÁLIDA¡¡");
-			ad.setMessage("enhorabuena acabas de pasar por la salida cobras 2000");
+			ad.setMessage("enhorabuena acabas de pasar por la salida cobras 2000 ECTS");
 			ad.show();
+			
+    	}
+    	
+    	if(pos>41){
 			
     		pos=pos-40;
     	}
@@ -386,7 +415,7 @@ public class Tablero extends Activity {
 				
 				AlertDialog ad = new AlertDialog.Builder(this).create();
 				ad.setTitle("GASTOS DE MATRÍCULA");
-				ad.setMessage("Tienes que pagar los gastos de mátricula -2000");
+				ad.setMessage("Tienes que pagar los gastos de mátricula (Pagas 2000 ECTS)");
 				ad.show();
 
 				eliminarjugador();
@@ -398,7 +427,7 @@ public class Tablero extends Activity {
 				
 				AlertDialog ad = new AlertDialog.Builder(this).create();
 				ad.setTitle("GASTOS DEPORTIVOS");
-				ad.setMessage("Tienes que pagar los gastos deportivos -1000");
+				ad.setMessage("Tienes que pagar los gastos deportivos Pagas 1000 ECTS");
 				ad.show();
 
 				eliminarjugador();
@@ -788,7 +817,7 @@ public class Tablero extends Activity {
 	              
 	              AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
 					ad.setTitle("!!PONER ESTRELLA¡¡");
-					ad.setMessage("enhorabuena de has puesto una estrella -"+((Tarjetas_Titulaciones)tar).getCosteEstrella());
+					ad.setMessage("enhorabuena de has puesto una estrella (Pagas "+((Tarjetas_Titulaciones)tar).getCosteEstrella()+"ECTS)");
 					ad.show();
 	              /*
 	              for(Tarjetas_Tablero tar:jugadorActual.getTarjetas()){
@@ -862,7 +891,7 @@ public class Tablero extends Activity {
 
 				AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
 				ad.setTitle("!!COMPRADA¡¡");
-				ad.setMessage("enhorabuena de comprar una tarjeta de titulación -"+tar.get_Creditos());
+				ad.setMessage("enhorabuena de comprar una tarjeta de titulación (Pagas "+tar.get_Creditos()+" ECTS)");
 				ad.show();
 				finPartida();
 					}else if(cas.equals("edificio")){
@@ -911,7 +940,7 @@ public class Tablero extends Activity {
 						
 						AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
 						ad.setTitle("!!COMPRADA¡¡");
-						ad.setMessage("enhorabuena de comprar una tarjeta de edificio -"+edificio.get_Creditos());
+						ad.setMessage("enhorabuena de comprar una tarjeta de edificio (Pagas "+edificio.get_Creditos()+" ECTS)");
 						ad.show();
 					}else if(cas.equals("servicio")){
 
@@ -944,7 +973,7 @@ public class Tablero extends Activity {
 						
 						AlertDialog ad = new AlertDialog.Builder(Tablero.this).create();
 						ad.setTitle("!!COMPRADA¡¡");
-						ad.setMessage("enhorabuena de comprar una tarjeta de servicio -"+servicio.get_Creditos());
+						ad.setMessage("enhorabuena de comprar una tarjeta de servicio (Pagas "+servicio.get_Creditos()+" ECTS)");
 						ad.show();
 
 					}
@@ -985,55 +1014,55 @@ public class Tablero extends Activity {
 						if(doble){
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat0()*2));
 		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat0()*2));
-		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat0()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+(tarjetaTitulacion.get_Mat0()*2)+" ECTS)");
 		    			}else{
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat0());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat0());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat0());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaTitulacion.get_Mat0()+" ECTS");
 			    		}
 						break;
 					case 1:
 						if(doble){
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat1()*2));
 		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat1()*2));
-		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat1()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+(tarjetaTitulacion.get_Mat1()*2)+" ECTS)");
 		    			}else{
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat1());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat1());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat1());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaTitulacion.get_Mat1()+ " ECTS)");
 			    		}
 						break;
 					case 2:
 						if(doble){
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat2()*2));
 		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat2()*2));
-		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat2()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+(tarjetaTitulacion.get_Mat2()*2)+" ECTS)");
 		    			}else{
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat2());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat2());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat2());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaTitulacion.get_Mat2()+" ECTS)");
 			    		}
 						break;
 					case 3:
 						if(doble){
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat3()*2));
 		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat3()*2));
-		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat3()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+(tarjetaTitulacion.get_Mat3()*2)+" ECTS)");
 		    			}else{
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat3());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat3());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat3());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaTitulacion.get_Mat3()+" ECTS)");
 			    		}
 						break;
 					case 4:
 						if(doble){
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Mat4()*2));
 		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Mat4()*2));
-		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Mat4()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+(tarjetaTitulacion.get_Mat4()*2)+ " ECTS)");
 		    			}else{
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Mat4());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Mat4());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Mat4());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaTitulacion.get_Mat4()+" ECTS)");
 			    		}
 						break;
 
@@ -1041,11 +1070,11 @@ public class Tablero extends Activity {
 						if(doble){
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-(tarjetaTitulacion.get_Licenciado()*2));
 		    				jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+(tarjetaTitulacion.get_Licenciado()*2));
-		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+(tarjetaTitulacion.get_Licenciado()*2));
+		    				ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+(tarjetaTitulacion.get_Licenciado()*2)+" ECTS)");
 		    			}else{
 		    				jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaTitulacion.get_Licenciado());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaTitulacion.get_Licenciado());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaTitulacion.get_Licenciado());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaTitulacion.get_Licenciado()+" ECTS)");
 			    		}
 						break;
 					}
@@ -1095,26 +1124,26 @@ public class Tablero extends Activity {
 						case 1:
 							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste1());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste1());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste1());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaEdificio.get_Coste1()+" ECTS)");
 							
 							break;
 						case 2:
 							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste2());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste2());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste2());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaEdificio.get_Coste2()+" ECTS)");
 							
 							break;
 						case 3:
 							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste3());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste3());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste3());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaEdificio.get_Coste3()+" ECTS)");
 							
 							break;
 
 						default:
 							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaEdificio.get_Coste4());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaEdificio.get_Coste4());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaEdificio.get_Coste4());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaEdificio.get_Coste4()+" ECTS)");
 							
 							break;
 						}
@@ -1152,14 +1181,14 @@ public class Tablero extends Activity {
 						case 1:
 							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaServicio.get_Coste1());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaServicio.get_Coste1());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaServicio.get_Coste1());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaServicio.get_Coste1()+" ECTS)");
 							
 							break;
 							
 						default:
 							jugadorActual.set_Creditos(jugadorActual.get_Creditos()-tarjetaServicio.get_Coste2());
 			    			jugadorTarjeta.set_Creditos(jugadorTarjeta.get_Creditos()+tarjetaServicio.get_Coste2());
-			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" -"+tarjetaServicio.get_Coste2());
+			    			ad.setMessage("has tenido que pagar a "+jugadorTarjeta.get_Nombre()+" (Pagas "+tarjetaServicio.get_Coste2()+" ECTS)");
 							
 			    			break;
 						}
@@ -1203,13 +1232,16 @@ public class Tablero extends Activity {
         
         TableRow tr = new TableRow(this);
         LinearLayout ll1 = new LinearLayout(this);
+        //ScrollView ll1= new ScrollView(this);
+        HorizontalScrollView ll1a=new HorizontalScrollView(this);
         ll1.addView(boton);
         ll1.addView(boton1);
         ll1.addView(boton2);
         ll1.addView(botonComprar);
         ll1.addView(botonPagar);
         ll1.addView(botonSubir);
-        tr.addView(ll1);
+        ll1a.addView(ll1);
+        tr.addView(ll1a);
         
         LinearLayout ll = new LinearLayout(this);
 
