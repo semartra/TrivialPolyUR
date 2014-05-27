@@ -49,9 +49,9 @@ public class MenuPrincipal extends Activity {
 
            @Override
            public void onClick(View v) {
-              Button b=(Button) v;
-              b.setText("pulsado");
-              //Partida.Instancia().reset();
+              //Button b=(Button) v;
+              //b.setText("pulsado");
+               //Partida.Instancia().reset();
         	   Intent intent = new Intent(MenuPrincipal.this, PantallaJugadores.class);
         	   finish();
               startActivity(intent);

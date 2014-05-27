@@ -213,8 +213,8 @@ public class PantallaJugadores extends Activity {
             		   d.setTitle("Algo no es correcto");
         			   d.show();
         		   }else{
-        			   d.setTitle("J1:"+color+nombre+"J2:"+color1+nombre1);
-        			   d.show();
+        			   //d.setTitle("J1:"+color+nombre+"J2:"+color1+nombre1);
+        			   //d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
         			   //j1.setColor(getColor(color));
@@ -252,8 +252,8 @@ public class PantallaJugadores extends Activity {
             		   d.setTitle("Algo no es correcto");
         			   d.show();
         		   }else{
-        			   d.setTitle("J1:"+color+nombre+"J2:"+color1+nombre1+"J3:"+color2+nombre2);
-        			   d.show();
+        			   //d.setTitle("J1:"+color+nombre+"J2:"+color1+nombre1+"J3:"+color2+nombre2);
+        			   //d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
         			   //j1.setColor(getColor(color));
@@ -304,7 +304,7 @@ public class PantallaJugadores extends Activity {
             		   d.setTitle("Algo no es correcto");
         			   d.show();
         		   }else{
-        			   d.setTitle("J1:"+color+nombre+"J2:"+color1+nombre1+"J3:"+color2+nombre2+"J3:"+color3+nombre3);
+        			   //d.setTitle("J1:"+color+nombre+"J2:"+color1+nombre1+"J3:"+color2+nombre2+"J3:"+color3+nombre3);
         			   //d.show();
         			   Jugador j1=new Jugador();
         			   j1.set_Nombre(nombre);
@@ -347,7 +347,7 @@ public class PantallaJugadores extends Activity {
         			   //Partida.Instancia().setJugadores(jugadores);
         			   jugadores.put(4, j4);
         			   Partida.Instancia().setJugadores(jugadores);
-        			   d.show();
+        			   //d.show();
         			   Intent intent = new Intent(PantallaJugadores.this, Tablero.class);
                 	   finish();
                       startActivity(intent);

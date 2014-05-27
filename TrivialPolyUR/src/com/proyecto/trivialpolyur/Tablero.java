@@ -3,6 +3,8 @@ package com.proyecto.trivialpolyur;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import pl.polidea.view.ZoomView;
+
 import android.R.array;
 import android.R.bool;
 import android.os.Bundle;
@@ -28,13 +30,13 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ZoomControls;
 
 public class Tablero extends Activity {
 
 	//Button pruebas;
-	int p=1; //caer dos veces seguidas pruebas
-	
 	
     private String res="";
     private boolean sol=false;
@@ -225,7 +227,7 @@ public class Tablero extends Activity {
 		}
 		ventana.show();		
 	}
-
+	
     public void aceptar(){
     	if(Partida.Instancia().JugadorActual().getTurnos()==0){
     		int d1=Dado.lanzarDado();
@@ -235,28 +237,9 @@ public class Tablero extends Activity {
     		dobles=(d1==d2);
     		t.show();
     		//cambiendo resultado vas a la casillas que quieras
-    		
-    		resultado=2;
-    		//dobles=false;
-    		
-    		
-    		//3 veces
     		/*
-    		if(p==1)
-    		{	 
     			resultado=2;
-    		    p++;
-    	    }
-    	    else if(p==2)
-    	    {
-    	    	resultado=34;
-    		    p++;
-    	    }
-    		else
-    		{
-    			resultado=6;
-    			p=2;
-    		}
+        		dobles=false;
     		*/
     		
     	}else{
@@ -386,8 +369,13 @@ public class Tablero extends Activity {
             	res=items[item];
             }});
         
-        builder.setTitle(preg[0]);
-
+        //builder.setTitle(preg[0]);
+        TextView title = new TextView(this);
+        title.setText(preg[0]);
+        title.setPadding(10, 10, 10, 10);
+        title.setTextSize(20);
+        builder.setCustomTitle(title);
+        
         res="";
         builder.show();
 		}else{
@@ -1245,8 +1233,13 @@ public class Tablero extends Activity {
         
         LinearLayout ll = new LinearLayout(this);
 
+        ZoomView zoomView=new ZoomView(this);
+        //ZoomControls zc=new ZoomControls(this);
+        zoomView.addView(table);
+
         ll.setOrientation(LinearLayout.VERTICAL);
-        ll.addView(table);
+        //ll.addView(table);
+        ll.addView(zoomView);
         ll.addView(tr);
         setContentView(ll);
     }

@@ -260,7 +260,7 @@ public class TableroSecundario extends TabActivity {
                   
                   ((TextView) findViewById(R.id.textView51a)).setText("Precio");
                   ((TextView) findViewById(R.id.textView51b)).setText(tarjeta.get_Creditos()+"");
-                  ((TextView) findViewById(R.id.textView52a)).setText("Estrella");
+                  ((TextView) findViewById(R.id.textView52a)).setText("Sin Estrella");
                   ((TextView) findViewById(R.id.textView52b)).setText(tarTit.get_Mat0()+"");
                   ((TextView) findViewById(R.id.textView53a)).setText("Matricula 1");
                   ((TextView) findViewById(R.id.textView53b)).setText(tarTit.get_Mat1()+"");
@@ -317,7 +317,7 @@ public class TableroSecundario extends TabActivity {
                   
                   ((TextView) findViewById(R.id.textView11a)).setText("Precio");
                   ((TextView) findViewById(R.id.textView11b)).setText(tarjeta.get_Creditos()+"");
-                  ((TextView) findViewById(R.id.textView12a)).setText("Estrella");
+                  ((TextView) findViewById(R.id.textView12a)).setText("Sin Estrella");
                   ((TextView) findViewById(R.id.textView12b)).setText(tarTit.get_Mat0()+"");
                   ((TextView) findViewById(R.id.textView13a)).setText("Matricula 1");
                   ((TextView) findViewById(R.id.textView13b)).setText(tarTit.get_Mat1()+"");
@@ -364,7 +364,7 @@ public class TableroSecundario extends TabActivity {
                   
                   ((TextView) findViewById(R.id.textView21a)).setText("Precio");
                   ((TextView) findViewById(R.id.textView21b)).setText(tarjeta.get_Creditos()+"");
-                  ((TextView) findViewById(R.id.textView22a)).setText("Estrella");
+                  ((TextView) findViewById(R.id.textView22a)).setText("Sin Estrella");
                   ((TextView) findViewById(R.id.textView22b)).setText(tarTit.get_Mat0()+"");
                   ((TextView) findViewById(R.id.textView23a)).setText("Matricula 1");
                   ((TextView) findViewById(R.id.textView23b)).setText(tarTit.get_Mat1()+"");
@@ -411,7 +411,7 @@ public class TableroSecundario extends TabActivity {
                   
                   ((TextView) findViewById(R.id.textView31a)).setText("Precio");
                   ((TextView) findViewById(R.id.textView31b)).setText(tarjeta.get_Creditos()+"");
-                  ((TextView) findViewById(R.id.textView32a)).setText("Estrella");
+                  ((TextView) findViewById(R.id.textView32a)).setText("Sin Estrella");
                   ((TextView) findViewById(R.id.textView32b)).setText(tarTit.get_Mat0()+"");
                   ((TextView) findViewById(R.id.textView33a)).setText("Matricula 1");
                   ((TextView) findViewById(R.id.textView33b)).setText(tarTit.get_Mat1()+"");
@@ -458,7 +458,7 @@ public class TableroSecundario extends TabActivity {
                   
                   ((TextView) findViewById(R.id.textView41a)).setText("Precio");
                   ((TextView) findViewById(R.id.textView41b)).setText(tarjeta.get_Creditos()+"");
-                  ((TextView) findViewById(R.id.textView42a)).setText("Estrella");
+                  ((TextView) findViewById(R.id.textView42a)).setText("Sin Estrella");
                   ((TextView) findViewById(R.id.textView42b)).setText(tarTit.get_Mat0()+"");
                   ((TextView) findViewById(R.id.textView43a)).setText("Matricula 1");
                   ((TextView) findViewById(R.id.textView43b)).setText(tarTit.get_Mat1()+"");

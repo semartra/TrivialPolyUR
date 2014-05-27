@@ -15,9 +15,13 @@ public class Partida {
 		return partida;
 	}
 	
-	/*public void reset(){
-		partida.jugadores.clear();
-	}*/
+	public void reset(){
+		partida=null;
+		tarjetas=new ArrayList<Tarjetas_Tablero>();
+		tarjetasEdificio= new ArrayList<Tarjetas_Tablero>();
+		tarjetasServicio=new ArrayList<Tarjetas_Tablero>();
+		jugadores=new HashMap<Integer, Jugador>();
+	}
 	
 	private static void crearTarjetas() {
 		int[] fondos1={R.drawable.casilla02_1,R.drawable.casilla02_2,R.drawable.casilla02_3,R.drawable.casilla02_4,R.drawable.casilla02_5};

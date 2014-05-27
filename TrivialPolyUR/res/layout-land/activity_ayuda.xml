@@ -33,7 +33,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="=> Este juego es una mezcla de 2 de los mas populares juegos de mesa, el TRIVIAL y el MONOPOLY, pero ambientado en la universidad de la Rioja."
+            android:text="=> Este juego es una mezcla de 2 de los mas populares juegos de mesa, el TRIVIAL y el MONOPOLY, pero ambientado en la Universidad de La Rioja."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip"
              />
@@ -42,7 +42,7 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> A este juego pueden jugar hasta un maximo de 4 jugadores."
+            android:text="=> A este juego pueden jugar hasta un máximo de 4 jugadores y un mínimo de 1 jugador."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
         	
@@ -50,7 +50,7 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> Este juego consta de 40 casillas en las que se dispone de titulaciones de titulaciones, secretaria(banca), tarjetas sorpresa, "
+            android:text="=> Este juego consta de 40 casillas en las que se dispone de titulaciones, secretaria(banca), tarjetas sorpresa..."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
         	
@@ -58,7 +58,7 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> Las CASILLAS de EDIFICIOS y de TITULACIONES se pueden comprar mediante creditos ECTS, y cobraran alquiler a todo jugador no propietario que caiga en ellas."
+            android:text="=> Para pasarse el juego hay que conseguir las 22 casillas TITULACIONES"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
         	
@@ -66,7 +66,7 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> La moneda de cambio es el credito ECTS, el que consiga todos las titulaciones gana."
+            android:text="=> Las CASILLAS de EDIFICIOS, SERVICIOS y de TITULACIONES se pueden comprar mediante creditos ECTS, y cobraran alquiler a todo jugador no propietario que caiga en ellas."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
         	
@@ -74,7 +74,7 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> Las TITULACIONES constan de varios niveles llamados matriculaciones, cuando se tengan todos los niveles, se considerara la titulacion 'terminada', cada usuario que caiga y no la posea deberá pagar un alquiler."
+            android:text="=> Las TITULACIONES constan de 6 niveles llamados matriculaciones, para subir nivel tienes que caer en una titulacion que te pertenezca y aceptar la pregunta, cada usuario que caiga y no la posea deberá pagar un alquiler dependiendo del nivel en el que se encuentre la casilla."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
         	
@@ -82,10 +82,19 @@
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"            
-            android:text="=> Las CASILLAS DE EDIFICIOS pueden ser poseidas por los jugadores, el coste de caer en estas casillas es directamente proporcional al numero de casillas que tenga el propietario de la casilla. "
+            android:text="=> Las CASILLAS DE EDIFICIOS pueden ser poseidas por los jugadores, dependiendo del número de EDIFICIOS que posea el jugador propietario se le pagara más cuantos más EDIFICIOS tenga, y menos cuantos menos EDIFICIOS tenga. "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
-        	        	
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Las CASILLAS DE SERVICIO pueden ser poseidas por los jugadores, dependiendo del número de SERVICIOS que posea el jugador propietario se le pagara más cuantos más SERVICIOS tenga, y menos cuantos menos SERVICIOS tenga. "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        		
         	<TextView
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
@@ -102,7 +111,48 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="10dip" />
             
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> El juego va por turnos para cada jugador. Un jugador podra realizar una tirada por turnos con la correspondiente acción de esa casilla, luego deberá pasar el turno pulsando el boton 'Pasar Turno', el turno irá para el jugador siguiente"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> En caso de sacar doble en la tirada el jugador seguira tirando, para ello al darle a 'Pasar Turno', seguira tirando él"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Si un jugador debé pagar algo y no tiene suficientes ECTS sera elimanado de la partida y todas sus propiedades volveran a secretaría, si fuera el último jugador terminaría la partida"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Los jugadores podran ver como va la partida en la pantalla secundaria"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"            
+            android:text="=> Al pasar por la casilla de Salida el jugador cobrara 2000 ECTS"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="10dip" />
+        	
         </LinearLayout>
+        
     </ScrollView>
 
 
